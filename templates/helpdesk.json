@@ -1,7 +1,6 @@
 {
- "kind": "template",
- "version": 1,
  "created_at": "2026-06-04T19:35:47Z",
+ "kind": "template",
  "tables": {
   "app_settings": [
    {
@@ -28,7 +27,7 @@
     "icon": "bi-speedometer2",
     "id": 1,
     "title": "Підтримка",
-    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Відкриті\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"neq\",\"value\":\"Закрита\"}],\"icon\":\"bi-folder2-open\",\"color\":\"#fd7e14\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Нові\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Нова\"}],\"icon\":\"bi-bell\",\"color\":\"#dc3545\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Заявки за агентом\",\"type_id\":2,\"group_by\":\"agent\",\"metric_fn\":\"count\",\"sort_dir\":\"desc\",\"group_label\":\"Агент\",\"metric_label\":\"К-сть\"}\n\t]"
+    "widgets_json": "[{\"type\": \"metric\", \"title\": \"Відкриті\", \"type_id\": 2, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"neq\", \"value\": \"Закрита\"}], \"icon\": \"bi-folder2-open\", \"color\": \"#fd7e14\", \"width\": 4, \"id\": \"w1\"}, {\"type\": \"metric\", \"title\": \"Нові\", \"type_id\": 2, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Нова\"}], \"icon\": \"bi-bell\", \"color\": \"#dc3545\", \"width\": 4, \"id\": \"w2\"}, {\"type\": \"table\", \"title\": \"Заявки за агентом\", \"type_id\": 2, \"group_by\": \"agent\", \"metric_fn\": \"count\", \"sort_dir\": \"desc\", \"group_label\": \"Агент\", \"metric_label\": \"К-сть\", \"id\": \"w3\"}]"
    }
   ],
   "perm_presets": [
@@ -827,14 +826,14 @@
    {
     "created_at": "2026-06-04 22:35:47",
     "extras_json": "{}",
-    "filters_json": "",
+    "filters_json": "[]",
     "id": 1,
     "name": "🗂 Дошка",
-    "sort_json": "",
+    "sort_json": "[]",
     "type_id": 2,
     "user_id": null,
     "view_mode": "kanban",
-    "visible_fields": ""
+    "visible_fields": "[]"
    },
    {
     "created_at": "2026-06-04 22:35:47",
@@ -846,7 +845,7 @@
     "type_id": 2,
     "user_id": null,
     "view_mode": "grid",
-    "visible_fields": ""
+    "visible_fields": "[]"
    }
   ],
   "scripts": [
@@ -871,7 +870,7 @@
     "updated_at": "2026-06-04 22:35:47"
    },
    {
-    "code": "if (ctx.event==='before_create' \u0026\u0026 !ctx.record.agent) {\n  var a = gloud.query('agents').where('team','eq','L1').first();\n  if (a) return { agent: a.id };\n}",
+    "code": "if (ctx.event==='before_create' && !ctx.record.agent) {\n  var a = gloud.query('agents').where('team','eq','L1').first();\n  if (a) return { agent: a.id };\n}",
     "created_at": "2026-06-04 22:35:47",
     "description": "",
     "enabled": 1,
@@ -881,7 +880,7 @@
     "updated_at": "2026-06-04 22:35:47"
    },
    {
-    "code": "if (ctx.event==='after_update' \u0026\u0026 ctx.record.status==='Закрита' \u0026\u0026 ctx.old.status!=='Закрита' \u0026\u0026 ctx.record.requester_email) {\n  gloud.email.send(ctx.record.requester_email, 'Вашу заявку закрито', 'Дякуємо за звернення!');\n}",
+    "code": "if (ctx.event==='after_update' && ctx.record.status==='Закрита' && ctx.old.status!=='Закрита' && ctx.record.requester_email) {\n  gloud.email.send(ctx.record.requester_email, 'Вашу заявку закрито', 'Дякуємо за звернення!');\n}",
     "created_at": "2026-06-04 22:35:47",
     "description": "",
     "enabled": 1,
@@ -944,5 +943,6 @@
     "script_id": 2
    }
   ]
- }
+ },
+ "version": 1
 }

@@ -1,7 +1,6 @@
 {
- "kind": "template",
- "version": 1,
  "created_at": "2026-06-04T19:35:47Z",
+ "kind": "template",
  "tables": {
   "app_settings": [
    {
@@ -28,7 +27,7 @@
     "icon": "bi-people",
     "id": 1,
     "title": "Кадри",
-    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Працівників\",\"type_id\":3,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Працює\"}],\"icon\":\"bi-people\",\"color\":\"#198754\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"У відпустці\",\"type_id\":3,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Відпустка\"}],\"icon\":\"bi-calendar-heart\",\"color\":\"#0dcaf0\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Штат за відділом\",\"type_id\":3,\"group_by\":\"department\",\"metric_fn\":\"count\",\"sort_dir\":\"desc\",\"group_label\":\"Відділ\",\"metric_label\":\"Людей\"}\n\t]"
+    "widgets_json": "[{\"type\": \"metric\", \"title\": \"Працівників\", \"type_id\": 3, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Працює\"}], \"icon\": \"bi-people\", \"color\": \"#198754\", \"width\": 4, \"id\": \"w1\"}, {\"type\": \"metric\", \"title\": \"У відпустці\", \"type_id\": 3, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Відпустка\"}], \"icon\": \"bi-calendar-heart\", \"color\": \"#0dcaf0\", \"width\": 4, \"id\": \"w2\"}, {\"type\": \"table\", \"title\": \"Штат за відділом\", \"type_id\": 3, \"group_by\": \"department\", \"metric_fn\": \"count\", \"sort_dir\": \"desc\", \"group_label\": \"Відділ\", \"metric_label\": \"Людей\", \"id\": \"w3\"}]"
    }
   ],
   "perm_presets": [
@@ -1027,26 +1026,26 @@
    {
     "created_at": "2026-06-04 22:35:47",
     "extras_json": "{}",
-    "filters_json": "",
+    "filters_json": "[]",
     "id": 1,
     "name": "🗃 Картки",
-    "sort_json": "",
+    "sort_json": "[]",
     "type_id": 3,
     "user_id": null,
     "view_mode": "gallery",
-    "visible_fields": ""
+    "visible_fields": "[]"
    },
    {
     "created_at": "2026-06-04 22:35:47",
     "extras_json": "{}",
-    "filters_json": "",
+    "filters_json": "[]",
     "id": 2,
     "name": "📅 Календар",
-    "sort_json": "",
+    "sort_json": "[]",
     "type_id": 4,
     "user_id": null,
     "view_mode": "calendar",
-    "visible_fields": ""
+    "visible_fields": "[]"
    },
    {
     "created_at": "2026-06-04 22:35:47",
@@ -1054,16 +1053,16 @@
     "filters_json": "[{\"id\":\"1\",\"fieldName\":\"status\",\"op\":\"eq\",\"value\":\"Заявка\",\"group\":\"and\"}]",
     "id": 3,
     "name": "⏳ На узгодженні",
-    "sort_json": "",
+    "sort_json": "[]",
     "type_id": 4,
     "user_id": null,
     "view_mode": "grid",
-    "visible_fields": ""
+    "visible_fields": "[]"
    }
   ],
   "scripts": [
    {
-    "code": "if (ctx.event==='before_update' \u0026\u0026 ctx.record.status==='Узгоджено' \u0026\u0026 ctx.old.status!=='Узгоджено') {\n  var emp = gloud.records.get(ctx.record.employee);\n  if (emp \u0026\u0026 ctx.record.days \u003e emp.vacation_days) gloud.fail('Недостатньо днів відпустки у '+emp.name);\n}",
+    "code": "if (ctx.event==='before_update' && ctx.record.status==='Узгоджено' && ctx.old.status!=='Узгоджено') {\n  var emp = gloud.records.get(ctx.record.employee);\n  if (emp && ctx.record.days > emp.vacation_days) gloud.fail('Недостатньо днів відпустки у '+emp.name);\n}",
     "created_at": "2026-06-04 22:35:47",
     "description": "",
     "enabled": 1,
@@ -1073,7 +1072,7 @@
     "updated_at": "2026-06-04 22:35:47"
    },
    {
-    "code": "var md = gloud.now().substring(5,10);\nvar all = gloud.query('staff').where('status','neq','Звільнений').all();\nvar today = all.filter(function(e){ return (e.birthday||'').substring(5,10)===md; });\ntoday.forEach(function(e){ gloud.telegram.send('hr', '🎂 Сьогодні ДН у \u003cb\u003e'+e.name+'\u003c/b\u003e!'); });",
+    "code": "var md = gloud.now().substring(5,10);\nvar all = gloud.query('staff').where('status','neq','Звільнений').all();\nvar today = all.filter(function(e){ return (e.birthday||'').substring(5,10)===md; });\ntoday.forEach(function(e){ gloud.telegram.send('hr', '🎂 Сьогодні ДН у <b>'+e.name+'</b>!'); });",
     "created_at": "2026-06-04 22:35:47",
     "description": "",
     "enabled": 1,
@@ -1107,5 +1106,6 @@
    }
   ],
   "webhooks": []
- }
+ },
+ "version": 1
 }

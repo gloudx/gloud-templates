@@ -1,7 +1,6 @@
 {
- "kind": "template",
- "version": 1,
  "created_at": "2026-06-04T19:35:47Z",
+ "kind": "template",
  "tables": {
   "app_settings": [
    {
@@ -28,7 +27,7 @@
     "icon": "bi-megaphone",
     "id": 1,
     "title": "Контент",
-    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Заплановано\",\"type_id\":3,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Заплановано\"}],\"icon\":\"bi-calendar-check\",\"color\":\"#0d6efd\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Опубліковано\",\"type_id\":3,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Опубліковано\"}],\"icon\":\"bi-send-check\",\"color\":\"#198754\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Публікації за статусом\",\"type_id\":3,\"group_by\":\"status\",\"metric_fn\":\"count\",\"sort_dir\":\"desc\",\"group_label\":\"Статус\",\"metric_label\":\"К-сть\"}\n\t]"
+    "widgets_json": "[{\"type\": \"metric\", \"title\": \"Заплановано\", \"type_id\": 3, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Заплановано\"}], \"icon\": \"bi-calendar-check\", \"color\": \"#0d6efd\", \"width\": 4, \"id\": \"w1\"}, {\"type\": \"metric\", \"title\": \"Опубліковано\", \"type_id\": 3, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Опубліковано\"}], \"icon\": \"bi-send-check\", \"color\": \"#198754\", \"width\": 4, \"id\": \"w2\"}, {\"type\": \"table\", \"title\": \"Публікації за статусом\", \"type_id\": 3, \"group_by\": \"status\", \"metric_fn\": \"count\", \"sort_dir\": \"desc\", \"group_label\": \"Статус\", \"metric_label\": \"К-сть\", \"id\": \"w3\"}]"
    }
   ],
   "perm_presets": [
@@ -892,43 +891,43 @@
    {
     "created_at": "2026-06-04 22:35:47",
     "extras_json": "{}",
-    "filters_json": "",
+    "filters_json": "[]",
     "id": 1,
     "name": "🗂 Пайплайн",
-    "sort_json": "",
+    "sort_json": "[]",
     "type_id": 3,
     "user_id": null,
     "view_mode": "kanban",
-    "visible_fields": ""
+    "visible_fields": "[]"
    },
    {
     "created_at": "2026-06-04 22:35:47",
     "extras_json": "{}",
-    "filters_json": "",
+    "filters_json": "[]",
     "id": 2,
     "name": "📅 Календар",
-    "sort_json": "",
+    "sort_json": "[]",
     "type_id": 3,
     "user_id": null,
     "view_mode": "calendar",
-    "visible_fields": ""
+    "visible_fields": "[]"
    },
    {
     "created_at": "2026-06-04 22:35:47",
     "extras_json": "{}",
-    "filters_json": "",
+    "filters_json": "[]",
     "id": 3,
     "name": "💡 Топ ідей",
     "sort_json": "[{\"fieldName\":\"votes\",\"direction\":\"desc\"}]",
     "type_id": 4,
     "user_id": null,
     "view_mode": "grid",
-    "visible_fields": ""
+    "visible_fields": "[]"
    }
   ],
   "scripts": [
    {
-    "code": "if (ctx.event==='after_update' \u0026\u0026 ctx.record.status==='Опубліковано' \u0026\u0026 ctx.old.status!=='Опубліковано') {\n  gloud.http.post('https://hooks.example.com/publish', { title: ctx.record.title, link: ctx.record.link });\n}",
+    "code": "if (ctx.event==='after_update' && ctx.record.status==='Опубліковано' && ctx.old.status!=='Опубліковано') {\n  gloud.http.post('https://hooks.example.com/publish', { title: ctx.record.title, link: ctx.record.link });\n}",
     "created_at": "2026-06-04 22:35:47",
     "description": "",
     "enabled": 1,
@@ -938,7 +937,7 @@
     "updated_at": "2026-06-04 22:35:47"
    },
    {
-    "code": "var rows = gloud.table({type:'posts', group_by:'status', metric_fn:'count'});\nvar body = rows.map(function(r){return r.label+': '+r.value;}).join('\\n');\ngloud.telegram.send('smm', '\u003cb\u003eКонтент-план\u003c/b\u003e\\n'+body);",
+    "code": "var rows = gloud.table({type:'posts', group_by:'status', metric_fn:'count'});\nvar body = rows.map(function(r){return r.label+': '+r.value;}).join('\\n');\ngloud.telegram.send('smm', '<b>Контент-план</b>\\n'+body);",
     "created_at": "2026-06-04 22:35:47",
     "description": "",
     "enabled": 1,
@@ -982,5 +981,6 @@
    }
   ],
   "webhooks": []
- }
+ },
+ "version": 1
 }
