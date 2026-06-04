@@ -1,0 +1,1331 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-04T19:35:47Z",
+ "tables": {
+  "app_settings": [
+   {
+    "key": "app_title",
+    "value": "CRM продажів"
+   },
+   {
+    "key": "home_title",
+    "value": "CRM продажів"
+   },
+   {
+    "key": "home_text",
+    "value": "Демо-конфігурація: клієнти, угоди, задачі. Воронка, прогнози, сповіщення."
+   },
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   },
+   {
+    "key": "home_metrics_json",
+    "value": "[\n\t\t{\"type\":\"metric\",\"title\":\"Виграно, сума\",\"type_id\":2,\"field\":\"amount\",\"fn\":\"sum\",\"filters\":[{\"field\":\"stage\",\"op\":\"eq\",\"value\":\"Виграно\"}],\"icon\":\"bi-cash-stack\",\"color\":\"#198754\",\"prefix\":\"₴\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Угод у роботі\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"icon\":\"bi-briefcase\",\"color\":\"#0d6efd\",\"width\":4}\n\t]"
+   }
+  ],
+  "dashboards": [
+   {
+    "color": "#198754",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-graph-up",
+    "id": 1,
+    "title": "Продажі",
+    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Виграно, сума\",\"type_id\":2,\"field\":\"amount\",\"fn\":\"sum\",\"filters\":[{\"field\":\"stage\",\"op\":\"eq\",\"value\":\"Виграно\"}],\"icon\":\"bi-cash-stack\",\"color\":\"#198754\",\"prefix\":\"₴\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Активні угоди\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"stage\",\"op\":\"eq\",\"value\":\"Перемовини\"}],\"icon\":\"bi-briefcase\",\"color\":\"#fd7e14\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Відкриті задачі\",\"type_id\":3,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"done\",\"op\":\"eq\",\"value\":\"false\"}],\"icon\":\"bi-list-check\",\"color\":\"#0dcaf0\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Угоди за етапом\",\"type_id\":2,\"group_by\":\"stage\",\"metric_fn\":\"sum\",\"metric_field\":\"amount\",\"sort_dir\":\"desc\",\"group_label\":\"Етап\",\"metric_label\":\"Сума\"}\n\t]"
+   }
+  ],
+  "perm_presets": [
+   {
+    "built_in": 0,
+    "id": 2,
+    "name": "Менеджер з продажу",
+    "perms_json": "[\"entity:clients:read\",\"entity:clients:create\",\"entity:clients:edit\",\"entity:deals:read\",\"entity:deals:create\",\"entity:deals:edit\",\"entity:deals:manage_views\",\"entity:tasks:read\",\"entity:tasks:create\",\"entity:tasks:edit\",\"entity:tasks:delete\"]"
+   }
+  ],
+  "pivots": [
+   {
+    "color": "#0d6efd",
+    "config_json": "{\"base_type_id\":2,\"rows\":[{\"src\":\"base\",\"field\":\"stage\"}],\"columns\":[{\"src\":\"base\",\"field\":\"close_date\",\"bucket\":\"month\"}],\"values\":[{\"src\":\"base\",\"field\":\"amount\",\"fn\":\"sum\",\"label\":\"Сума\",\"prefix\":\"₴\"}],\"options\":{\"show_row_totals\":true,\"show_col_totals\":true,\"show_grand_total\":true}}",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-table",
+    "id": 1,
+    "title": "Угоди: етап × місяць"
+   }
+  ],
+  "schedules": [
+   {
+    "action_kind": "script",
+    "body": "",
+    "channel": "",
+    "created_at": "2026-06-04T22:35:47+03:00",
+    "cron_expr": "0 9 * * 1-5",
+    "done": 0,
+    "enabled": 1,
+    "id": 1,
+    "last_error": "",
+    "last_run": "",
+    "last_status": "",
+    "name": "Дайджест 9:00",
+    "parse_mode": "HTML",
+    "run_at": "",
+    "script_id": 2,
+    "subject": "",
+    "target": "",
+    "when_kind": "cron"
+   }
+  ],
+  "schema_fields": [
+   {
+    "field_type": "auto_number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 1,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "client_no",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 0,
+    "title": "№",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 2,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 1,
+    "title": "Назва",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 3,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "industry",
+    "options_json": "[{\"value\":\"Роздріб\",\"color\":\"#0d6efd\"},{\"value\":\"Виробництво\",\"color\":\"#198754\"},{\"value\":\"IT\",\"color\":\"#6f42c1\"},{\"value\":\"Послуги\",\"color\":\"#fd7e14\"}]",
+    "required": 0,
+    "sort_order": 2,
+    "title": "Галузь",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 4,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "manager",
+    "options_json": "[{\"value\":\"Олена\",\"color\":\"#20c997\"},{\"value\":\"Ігор\",\"color\":\"#0dcaf0\"},{\"value\":\"Марія\",\"color\":\"#d63384\"}]",
+    "required": 0,
+    "sort_order": 3,
+    "title": "Менеджер",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "url",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 5,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "website",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Сайт",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "phone",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 6,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "phone",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 5,
+    "title": "Телефон",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "email",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 7,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "email",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 6,
+    "title": "Email",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "multi_select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 8,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "tags",
+    "options_json": "[{\"value\":\"VIP\",\"color\":\"#ffc107\"},{\"value\":\"Новий\",\"color\":\"#0dcaf0\"},{\"value\":\"Боржник\",\"color\":\"#dc3545\"}]",
+    "required": 0,
+    "sort_order": 7,
+    "title": "Теги",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "image",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 9,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "logo",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 8,
+    "title": "Лого",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "rich_text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 10,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "notes",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 9,
+    "title": "Нотатки",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 11,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "title",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Назва",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 12,
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "client",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Клієнт",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "currency",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 13,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "amount",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Сума",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "percent",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 14,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "probability",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Імовірність",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "formula",
+    "format_json": null,
+    "formula": "{amount} * {probability} / 100",
+    "hidden": 0,
+    "id": 15,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "forecast",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Прогноз",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 16,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "stage",
+    "options_json": "[{\"value\":\"Новий\",\"color\":\"#6c757d\"},{\"value\":\"Кваліфікація\",\"color\":\"#0dcaf0\"},{\"value\":\"Перемовини\",\"color\":\"#fd7e14\"},{\"value\":\"Виграно\",\"color\":\"#198754\"},{\"value\":\"Програно\",\"color\":\"#dc3545\"}]",
+    "required": 0,
+    "sort_order": 5,
+    "title": "Етап",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "rating",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 17,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "priority",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 6,
+    "title": "Пріоритет",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 18,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "close_date",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 7,
+    "title": "Закриття",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 19,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "title",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Задача",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 20,
+    "lookup_coll": "2",
+    "lookup_display": "title",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "deal",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Угода",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 21,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "due",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Дедлайн",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 22,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "status",
+    "options_json": "[{\"value\":\"Заплановано\",\"color\":\"#0dcaf0\"},{\"value\":\"В роботі\",\"color\":\"#fd7e14\"},{\"value\":\"Готово\",\"color\":\"#198754\"}]",
+    "required": 0,
+    "sort_order": 3,
+    "title": "Статус",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "boolean",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 23,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "done",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Виконано",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "SUM",
+    "hidden": 0,
+    "id": 24,
+    "lookup_coll": "client",
+    "lookup_display": "amount",
+    "lookup_type": "deals",
+    "lookup_value": null,
+    "name": "revenue",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 10,
+    "title": "Виручка",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "COUNT",
+    "hidden": 0,
+    "id": 25,
+    "lookup_coll": "client",
+    "lookup_display": null,
+    "lookup_type": "deals",
+    "lookup_value": null,
+    "name": "deals_count",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 11,
+    "title": "Угод",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "COUNT",
+    "hidden": 0,
+    "id": 26,
+    "lookup_coll": "deal",
+    "lookup_display": null,
+    "lookup_type": "tasks",
+    "lookup_value": null,
+    "name": "tasks_count",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 8,
+    "title": "Задач",
+    "type_id": 2,
+    "width": null
+   }
+  ],
+  "schema_records": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 2,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 3,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 4,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 5,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 6,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 7,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 8,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 9,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 10,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 11,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "schema_relations": [
+   {
+    "child_type_id": 2,
+    "fk_field": "client",
+    "icon": "bi-briefcase",
+    "id": 1,
+    "on_delete": "cascade",
+    "sort_order": 0,
+    "title": "Угоди",
+    "type_id": 1,
+    "visible_fields_json": "[\"title\",\"amount\",\"stage\"]"
+   },
+   {
+    "child_type_id": 3,
+    "fk_field": "deal",
+    "icon": "bi-check2-square",
+    "id": 2,
+    "on_delete": "cascade",
+    "sort_order": 0,
+    "title": "Задачі",
+    "type_id": 2,
+    "visible_fields_json": "[\"title\",\"due\",\"status\"]"
+   }
+  ],
+  "schema_types": [
+   {
+    "calendar_tpl_json": "",
+    "color": "#0d6efd",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "{\"mode\":\"fields\",\"header\":\"name\",\"fields\":[\"industry\",\"revenue\",\"manager\"],\"footer\":\"client_no\"}",
+    "icon": "bi-people",
+    "id": 1,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "clients",
+    "row_tpl_json": "",
+    "title": "Клієнти"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#198754",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-briefcase",
+    "id": 2,
+    "kanban_tpl_json": "{\"statusField\":\"stage\",\"sumField\":\"amount\",\"fields\":[\"client\",\"amount\",\"probability\"]}",
+    "kind": "entity",
+    "name": "deals",
+    "row_tpl_json": "",
+    "title": "Угоди"
+   },
+   {
+    "calendar_tpl_json": "{\"dateField\":\"due\",\"titleField\":\"title\",\"colorField\":\"status\"}",
+    "color": "#fd7e14",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-check2-square",
+    "id": 3,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "tasks",
+    "row_tpl_json": "",
+    "title": "Задачі"
+   }
+  ],
+  "schema_values": [
+   {
+    "field_id": 3,
+    "id": 1,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Роздріб"
+   },
+   {
+    "field_id": 4,
+    "id": 2,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Олена"
+   },
+   {
+    "field_id": 6,
+    "id": 3,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "+380501112233"
+   },
+   {
+    "field_id": 7,
+    "id": 4,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "info@svitanok.example"
+   },
+   {
+    "field_id": 8,
+    "id": 5,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "VIP,Новий"
+   },
+   {
+    "field_id": 10,
+    "id": 6,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Ключовий клієнт"
+   },
+   {
+    "field_id": 1,
+    "id": 7,
+    "record_id": 1,
+    "value_num": 1,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 2,
+    "id": 8,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "ТОВ «Світанок»"
+   },
+   {
+    "field_id": 5,
+    "id": 9,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "https://svitanok.example"
+   },
+   {
+    "field_id": 3,
+    "id": 10,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Послуги"
+   },
+   {
+    "field_id": 4,
+    "id": 11,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Ігор"
+   },
+   {
+    "field_id": 6,
+    "id": 12,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "+380671234567"
+   },
+   {
+    "field_id": 7,
+    "id": 13,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "koval@example"
+   },
+   {
+    "field_id": 8,
+    "id": 14,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Новий"
+   },
+   {
+    "field_id": 1,
+    "id": 15,
+    "record_id": 2,
+    "value_num": 2,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 2,
+    "id": 16,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "ФОП Коваль"
+   },
+   {
+    "field_id": 3,
+    "id": 17,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Виробництво"
+   },
+   {
+    "field_id": 4,
+    "id": 18,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Марія"
+   },
+   {
+    "field_id": 7,
+    "id": 19,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "sales@metal.example"
+   },
+   {
+    "field_id": 8,
+    "id": 20,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Боржник"
+   },
+   {
+    "field_id": 1,
+    "id": 21,
+    "record_id": 3,
+    "value_num": 3,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 2,
+    "id": 22,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "АТ «Метал»"
+   },
+   {
+    "field_id": 16,
+    "id": 23,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Перемовини"
+   },
+   {
+    "field_id": 17,
+    "id": 24,
+    "record_id": 4,
+    "value_num": 5,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 18,
+    "id": 25,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-15"
+   },
+   {
+    "field_id": 11,
+    "id": 26,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Постачання Q3"
+   },
+   {
+    "field_id": 12,
+    "id": 27,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 13,
+    "id": 28,
+    "record_id": 4,
+    "value_num": 120000,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 14,
+    "id": 29,
+    "record_id": 4,
+    "value_num": 80,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 12,
+    "id": 30,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 13,
+    "id": 31,
+    "record_id": 5,
+    "value_num": 350000,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 14,
+    "id": 32,
+    "record_id": 5,
+    "value_num": 100,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 16,
+    "id": 33,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Виграно"
+   },
+   {
+    "field_id": 17,
+    "id": 34,
+    "record_id": 5,
+    "value_num": 5,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 18,
+    "id": 35,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-01"
+   },
+   {
+    "field_id": 11,
+    "id": 36,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Річний контракт"
+   },
+   {
+    "field_id": 11,
+    "id": 37,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Пілот"
+   },
+   {
+    "field_id": 12,
+    "id": 38,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": 2,
+    "value_text": null
+   },
+   {
+    "field_id": 13,
+    "id": 39,
+    "record_id": 6,
+    "value_num": 25000,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 14,
+    "id": 40,
+    "record_id": 6,
+    "value_num": 40,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 16,
+    "id": 41,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Кваліфікація"
+   },
+   {
+    "field_id": 17,
+    "id": 42,
+    "record_id": 6,
+    "value_num": 3,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 18,
+    "id": 43,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-08-01"
+   },
+   {
+    "field_id": 18,
+    "id": 44,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-05-20"
+   },
+   {
+    "field_id": 11,
+    "id": 45,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Тендер"
+   },
+   {
+    "field_id": 12,
+    "id": 46,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": 3,
+    "value_text": null
+   },
+   {
+    "field_id": 13,
+    "id": 47,
+    "record_id": 7,
+    "value_num": 80000,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 14,
+    "id": 48,
+    "record_id": 7,
+    "value_num": 0,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 16,
+    "id": 49,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Програно"
+   },
+   {
+    "field_id": 17,
+    "id": 50,
+    "record_id": 7,
+    "value_num": 2,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 51,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": 4,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 52,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-02"
+   },
+   {
+    "field_id": 22,
+    "id": 53,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "В роботі"
+   },
+   {
+    "field_id": 23,
+    "id": 54,
+    "record_id": 8,
+    "value_num": 0,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 55,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Підготувати КП"
+   },
+   {
+    "field_id": 22,
+    "id": 56,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Заплановано"
+   },
+   {
+    "field_id": 23,
+    "id": 57,
+    "record_id": 9,
+    "value_num": 0,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 58,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Дзвінок клієнту"
+   },
+   {
+    "field_id": 20,
+    "id": 59,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": 4,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 60,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-05"
+   },
+   {
+    "field_id": 19,
+    "id": 61,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Підписати договір"
+   },
+   {
+    "field_id": 20,
+    "id": 62,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": 5,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 63,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-01"
+   },
+   {
+    "field_id": 22,
+    "id": 64,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Готово"
+   },
+   {
+    "field_id": 23,
+    "id": 65,
+    "record_id": 10,
+    "value_num": 1,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 66,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-20"
+   },
+   {
+    "field_id": 22,
+    "id": 67,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Заплановано"
+   },
+   {
+    "field_id": 23,
+    "id": 68,
+    "record_id": 11,
+    "value_num": 0,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 69,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Демо продукту"
+   },
+   {
+    "field_id": 20,
+    "id": 70,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": 6,
+    "value_text": null
+   }
+  ],
+  "schema_views": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 1,
+    "name": "🗂 Воронка",
+    "sort_json": "",
+    "type_id": 2,
+    "user_id": null,
+    "view_mode": "kanban",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{\"agg\":{\"amount\":\"sum\"}}",
+    "filters_json": "[{\"id\":\"1\",\"fieldName\":\"stage\",\"op\":\"eq\",\"value\":\"Виграно\",\"group\":\"and\"}]",
+    "id": 2,
+    "name": "🏆 Виграні",
+    "sort_json": "[{\"fieldName\":\"amount\",\"direction\":\"desc\"}]",
+    "type_id": 2,
+    "user_id": null,
+    "view_mode": "grid",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 3,
+    "name": "📅 Календар",
+    "sort_json": "",
+    "type_id": 3,
+    "user_id": null,
+    "view_mode": "calendar",
+    "visible_fields": ""
+   }
+  ],
+  "scripts": [
+   {
+    "code": "if (ctx.event==='after_update' \u0026\u0026 ctx.record.stage==='Виграно' \u0026\u0026 ctx.old.stage!=='Виграно') {\n  gloud.telegram.send('sales', '🏆 Угоду виграно: \u003cb\u003e'+ctx.record.title+'\u003c/b\u003e на суму '+ctx.record.amount);\n}",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 1,
+    "kind": "trigger",
+    "name": "Сповіщення про виграш",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "var rows = gloud.table({type:'deals', group_by:'stage', metric_fn:'sum', metric_field:'amount'});\nvar body = rows.map(function(r){return r.label+': ₴'+r.value;}).join('\\n');\ngloud.telegram.send('sales', '\u003cb\u003eДайджест угод\u003c/b\u003e\\n'+body);",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 2,
+    "kind": "batch",
+    "name": "Щоденний дайджест продажів",
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "telegram_bots": [],
+  "telegram_channels": [
+   {
+    "chat_id": "",
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "name": "sales",
+    "parse_mode": "HTML",
+    "token": ""
+   }
+  ],
+  "triggers": [
+   {
+    "enabled": 1,
+    "event": "after_update",
+    "filter_json": "[]",
+    "id": 1,
+    "name": "Угода виграна → Telegram",
+    "script_id": 1,
+    "sort_order": 0,
+    "type_id": 2
+   }
+  ],
+  "webhooks": []
+ }
+}

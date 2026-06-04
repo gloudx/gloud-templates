@@ -1,0 +1,1211 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-04T19:35:47Z",
+ "tables": {
+  "app_settings": [
+   {
+    "key": "home_text",
+    "value": "Проєкти, задачі, облік часу. Календар, kanban, зведена по людях."
+   },
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   },
+   {
+    "key": "app_title",
+    "value": "Проєкти"
+   },
+   {
+    "key": "home_title",
+    "value": "Управління проєктами"
+   }
+  ],
+  "dashboards": [
+   {
+    "color": "#6f42c1",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-kanban",
+    "id": 1,
+    "title": "Проєкти",
+    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Активні проєкти\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Активний\"}],\"icon\":\"bi-folder\",\"color\":\"#198754\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Залоговано годин\",\"type_id\":4,\"field\":\"hours\",\"fn\":\"sum\",\"icon\":\"bi-stopwatch\",\"color\":\"#20c997\",\"suffix\":\" год\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Години за співробітником\",\"type_id\":4,\"group_by\":\"employee\",\"metric_fn\":\"sum\",\"metric_field\":\"hours\",\"sort_dir\":\"desc\",\"group_label\":\"Хто\",\"metric_label\":\"Годин\"}\n\t]"
+   }
+  ],
+  "perm_presets": [
+   {
+    "built_in": 0,
+    "id": 2,
+    "name": "Учасник команди",
+    "perms_json": "[\"entity:projects:read\",\"entity:ptasks:read\",\"entity:ptasks:edit\",\"entity:ptasks:manage_views\",\"entity:timelogs:read\",\"entity:timelogs:create\",\"entity:employees:read\"]"
+   }
+  ],
+  "pivots": [
+   {
+    "color": "#20c997",
+    "config_json": "{\"base_type_id\":4,\"joins\":[{\"alias\":\"emp\",\"relation_id\":3,\"type_id\":1,\"fk_field\":\"employee\",\"direction\":\"parent\",\"title\":\"Співробітник\"}],\"rows\":[{\"src\":\"emp\",\"field\":\"name\"}],\"columns\":[{\"src\":\"base\",\"field\":\"date\",\"bucket\":\"month\"}],\"values\":[{\"src\":\"base\",\"field\":\"hours\",\"fn\":\"sum\",\"label\":\"Годин\"}],\"options\":{\"show_row_totals\":true,\"show_col_totals\":true,\"show_grand_total\":true}}",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-table",
+    "id": 1,
+    "title": "Години: людина × місяць"
+   }
+  ],
+  "schedules": [
+   {
+    "action_kind": "script",
+    "body": "",
+    "channel": "",
+    "created_at": "2026-06-04T22:35:47+03:00",
+    "cron_expr": "0 8 * * *",
+    "done": 0,
+    "enabled": 1,
+    "id": 1,
+    "last_error": "",
+    "last_run": "",
+    "last_status": "",
+    "name": "Дедлайни 8:00",
+    "parse_mode": "HTML",
+    "run_at": "",
+    "script_id": 1,
+    "subject": "",
+    "target": "",
+    "when_kind": "cron"
+   }
+  ],
+  "schema_fields": [
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 1,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Імʼя",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 2,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "role",
+    "options_json": "[{\"value\":\"Розробник\",\"color\":\"#0d6efd\"},{\"value\":\"Дизайнер\",\"color\":\"#d63384\"},{\"value\":\"PM\",\"color\":\"#198754\"}]",
+    "required": 0,
+    "sort_order": 1,
+    "title": "Роль",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "email",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 3,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "email",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Email",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 4,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Назва",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 5,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "status",
+    "options_json": "[{\"value\":\"Активний\",\"color\":\"#198754\"},{\"value\":\"Пауза\",\"color\":\"#ffc107\"},{\"value\":\"Завершено\",\"color\":\"#6c757d\"}]",
+    "required": 0,
+    "sort_order": 1,
+    "title": "Статус",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 6,
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "manager",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Менеджер",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 7,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "start",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Старт",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 8,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "deadline",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Дедлайн",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "currency",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 9,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "budget",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 5,
+    "title": "Бюджет",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 10,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "title",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Задача",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 11,
+    "lookup_coll": "2",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "project",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Проєкт",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "multi_lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 12,
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "assignees",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Виконавці",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 13,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "start",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Старт",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 14,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "due",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Дедлайн",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 15,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "priority",
+    "options_json": "[{\"value\":\"Низький\",\"color\":\"#6c757d\"},{\"value\":\"Середній\",\"color\":\"#0dcaf0\"},{\"value\":\"Високий\",\"color\":\"#dc3545\"}]",
+    "required": 0,
+    "sort_order": 5,
+    "title": "Пріоритет",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 16,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "status",
+    "options_json": "[{\"value\":\"Беклог\",\"color\":\"#6c757d\"},{\"value\":\"В роботі\",\"color\":\"#fd7e14\"},{\"value\":\"Рев'ю\",\"color\":\"#0dcaf0\"},{\"value\":\"Готово\",\"color\":\"#198754\"}]",
+    "required": 0,
+    "sort_order": 6,
+    "title": "Статус",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 17,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "estimate",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 7,
+    "title": "Оцінка, год",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 18,
+    "lookup_coll": "3",
+    "lookup_display": "title",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "task",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 0,
+    "title": "Задача",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 19,
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "employee",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Співробітник",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 20,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "date",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Дата",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 21,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "hours",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Годин",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "COUNT",
+    "hidden": 0,
+    "id": 22,
+    "lookup_coll": "project",
+    "lookup_display": null,
+    "lookup_type": "ptasks",
+    "lookup_value": null,
+    "name": "tasks_count",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 6,
+    "title": "Задач",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "SUM",
+    "hidden": 0,
+    "id": 23,
+    "lookup_coll": "task",
+    "lookup_display": "hours",
+    "lookup_type": "timelogs",
+    "lookup_value": null,
+    "name": "hours_logged",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 8,
+    "title": "Витрачено год",
+    "type_id": 3,
+    "width": null
+   }
+  ],
+  "schema_records": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 2,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 3,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 4,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 5,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 6,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 7,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 8,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 9,
+    "type_id": 4,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 10,
+    "type_id": 4,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 11,
+    "type_id": 4,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 12,
+    "type_id": 4,
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "schema_relations": [
+   {
+    "child_type_id": 3,
+    "fk_field": "project",
+    "icon": "bi-list-task",
+    "id": 1,
+    "on_delete": "cascade",
+    "sort_order": 0,
+    "title": "Задачі",
+    "type_id": 2,
+    "visible_fields_json": "[\"title\",\"status\",\"priority\"]"
+   },
+   {
+    "child_type_id": 4,
+    "fk_field": "task",
+    "icon": "bi-stopwatch",
+    "id": 2,
+    "on_delete": "cascade",
+    "sort_order": 0,
+    "title": "Час",
+    "type_id": 3,
+    "visible_fields_json": "[\"employee\",\"date\",\"hours\"]"
+   },
+   {
+    "child_type_id": 4,
+    "fk_field": "employee",
+    "icon": "bi-stopwatch",
+    "id": 3,
+    "on_delete": "clear",
+    "sort_order": 0,
+    "title": "Час",
+    "type_id": 1,
+    "visible_fields_json": "[\"task\",\"date\",\"hours\"]"
+   }
+  ],
+  "schema_types": [
+   {
+    "calendar_tpl_json": "",
+    "color": "#0d6efd",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-person",
+    "id": 1,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "employees",
+    "row_tpl_json": "",
+    "title": "Співробітники"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#6f42c1",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "{\"mode\":\"fields\",\"header\":\"name\",\"fields\":[\"status\",\"deadline\",\"hours_total\"],\"footer\":\"none\"}",
+    "icon": "bi-folder",
+    "id": 2,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "projects",
+    "row_tpl_json": "",
+    "title": "Проєкти"
+   },
+   {
+    "calendar_tpl_json": "{\"dateField\":\"start\",\"endDateField\":\"due\",\"titleField\":\"title\",\"colorField\":\"priority\"}",
+    "color": "#fd7e14",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-list-task",
+    "id": 3,
+    "kanban_tpl_json": "{\"statusField\":\"status\",\"sumField\":\"estimate\",\"fields\":[\"project\",\"assignees\",\"priority\"]}",
+    "kind": "entity",
+    "name": "ptasks",
+    "row_tpl_json": "",
+    "title": "Задачі"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#20c997",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-stopwatch",
+    "id": 4,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "timelogs",
+    "row_tpl_json": "",
+    "title": "Облік часу"
+   }
+  ],
+  "schema_values": [
+   {
+    "field_id": 2,
+    "id": 1,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Розробник"
+   },
+   {
+    "field_id": 3,
+    "id": 2,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "taras@team.example"
+   },
+   {
+    "field_id": 1,
+    "id": 3,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Тарас"
+   },
+   {
+    "field_id": 1,
+    "id": 4,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Ніна"
+   },
+   {
+    "field_id": 2,
+    "id": 5,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Дизайнер"
+   },
+   {
+    "field_id": 3,
+    "id": 6,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "nina@team.example"
+   },
+   {
+    "field_id": 1,
+    "id": 7,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Олег"
+   },
+   {
+    "field_id": 2,
+    "id": 8,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "PM"
+   },
+   {
+    "field_id": 3,
+    "id": 9,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "oleg@team.example"
+   },
+   {
+    "field_id": 4,
+    "id": 10,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Сайт v2"
+   },
+   {
+    "field_id": 5,
+    "id": 11,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Активний"
+   },
+   {
+    "field_id": 6,
+    "id": 12,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": 3,
+    "value_text": null
+   },
+   {
+    "field_id": 7,
+    "id": 13,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-01"
+   },
+   {
+    "field_id": 8,
+    "id": 14,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-08-31"
+   },
+   {
+    "field_id": 9,
+    "id": 15,
+    "record_id": 4,
+    "value_num": 200000,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 4,
+    "id": 16,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Мобільний застосунок"
+   },
+   {
+    "field_id": 5,
+    "id": 17,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Активний"
+   },
+   {
+    "field_id": 6,
+    "id": 18,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": 3,
+    "value_text": null
+   },
+   {
+    "field_id": 7,
+    "id": 19,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-01"
+   },
+   {
+    "field_id": 8,
+    "id": 20,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-10-15"
+   },
+   {
+    "field_id": 9,
+    "id": 21,
+    "record_id": 5,
+    "value_num": 350000,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 15,
+    "id": 22,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Високий"
+   },
+   {
+    "field_id": 16,
+    "id": 23,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "В роботі"
+   },
+   {
+    "field_id": 17,
+    "id": 24,
+    "record_id": 6,
+    "value_num": 16,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 25,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Дизайн головної"
+   },
+   {
+    "field_id": 11,
+    "id": 26,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": 4,
+    "value_text": null
+   },
+   {
+    "field_id": 12,
+    "id": 27,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "[2]"
+   },
+   {
+    "field_id": 13,
+    "id": 28,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-02"
+   },
+   {
+    "field_id": 14,
+    "id": 29,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-10"
+   },
+   {
+    "field_id": 14,
+    "id": 30,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-20"
+   },
+   {
+    "field_id": 15,
+    "id": 31,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Високий"
+   },
+   {
+    "field_id": 16,
+    "id": 32,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Беклог"
+   },
+   {
+    "field_id": 17,
+    "id": 33,
+    "record_id": 7,
+    "value_num": 24,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 34,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "API авторизації"
+   },
+   {
+    "field_id": 11,
+    "id": 35,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": 4,
+    "value_text": null
+   },
+   {
+    "field_id": 12,
+    "id": 36,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "[1]"
+   },
+   {
+    "field_id": 13,
+    "id": 37,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-05"
+   },
+   {
+    "field_id": 12,
+    "id": 38,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "[2,1]"
+   },
+   {
+    "field_id": 13,
+    "id": 39,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-02"
+   },
+   {
+    "field_id": 14,
+    "id": 40,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-12"
+   },
+   {
+    "field_id": 15,
+    "id": 41,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Середній"
+   },
+   {
+    "field_id": 16,
+    "id": 42,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Беклог"
+   },
+   {
+    "field_id": 17,
+    "id": 43,
+    "record_id": 8,
+    "value_num": 20,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 44,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Прототип екранів"
+   },
+   {
+    "field_id": 11,
+    "id": 45,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": 5,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 46,
+    "record_id": 9,
+    "value_num": 6,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 18,
+    "id": 47,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": 6,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 48,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": 2,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 49,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-03"
+   },
+   {
+    "field_id": 21,
+    "id": 50,
+    "record_id": 10,
+    "value_num": 5,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 18,
+    "id": 51,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": 6,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 52,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": 2,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 53,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-04"
+   },
+   {
+    "field_id": 18,
+    "id": 54,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": 7,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 55,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 56,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-06"
+   },
+   {
+    "field_id": 21,
+    "id": 57,
+    "record_id": 11,
+    "value_num": 8,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 18,
+    "id": 58,
+    "record_id": 12,
+    "value_num": null,
+    "value_ref": 8,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 59,
+    "record_id": 12,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 60,
+    "record_id": 12,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-07-03"
+   },
+   {
+    "field_id": 21,
+    "id": 61,
+    "record_id": 12,
+    "value_num": 4,
+    "value_ref": null,
+    "value_text": null
+   }
+  ],
+  "schema_views": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 1,
+    "name": "🗂 Дошка",
+    "sort_json": "",
+    "type_id": 3,
+    "user_id": null,
+    "view_mode": "kanban",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 2,
+    "name": "📅 Календар",
+    "sort_json": "",
+    "type_id": 3,
+    "user_id": null,
+    "view_mode": "calendar",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 3,
+    "name": "🗃 Галерея",
+    "sort_json": "",
+    "type_id": 2,
+    "user_id": null,
+    "view_mode": "gallery",
+    "visible_fields": ""
+   }
+  ],
+  "scripts": [
+   {
+    "code": "var soon = gloud.now().substring(0,10);\nvar due = gloud.query('ptasks').where('status','neq','Готово').where('due','lte',soon).all();\nif (due.length) gloud.telegram.send('pm', '⏰ Прострочені/сьогодні задачі: '+due.length);",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 1,
+    "kind": "batch",
+    "name": "Нагадування про дедлайни",
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "telegram_bots": [],
+  "telegram_channels": [
+   {
+    "chat_id": "",
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "name": "pm",
+    "parse_mode": "HTML",
+    "token": ""
+   }
+  ],
+  "triggers": [],
+  "webhooks": []
+ }
+}

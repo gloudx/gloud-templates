@@ -1,14 +1,59 @@
 {
+  "version": 1,
   "templates": [
     {
-      "description": "Стартовая конфигурация (экспорт текущего приложения)",
-      "file": "templates/demo.json",
-      "hasSampleData": false,
-      "icon": "bi-box",
-      "id": "demo",
-      "title": "Gidro ITSM Demo",
-      "version": 3
+      "id": "crm",
+      "title": "CRM продажів",
+      "description": "Клієнти, угоди, задачі: воронка, прогнози, дашборд і сповіщення.",
+      "icon": "bi-graph-up-arrow",
+      "version": 1,
+      "file": "templates/crm.json",
+      "hasSampleData": true
+    },
+    {
+      "id": "helpdesk",
+      "title": "Helpdesk / Тех. підтримка",
+      "description": "Заявки, агенти, база знань: Telegram-бот, webhook, авто-призначення, ескалація.",
+      "icon": "bi-headset",
+      "version": 1,
+      "file": "templates/helpdesk.json",
+      "hasSampleData": true
+    },
+    {
+      "id": "projects",
+      "title": "Управління проєктами",
+      "description": "Проєкти, задачі, облік часу: календар, kanban, зведена по людях.",
+      "icon": "bi-kanban",
+      "version": 1,
+      "file": "templates/projects.json",
+      "hasSampleData": true
+    },
+    {
+      "id": "inventory",
+      "title": "Склад і замовлення",
+      "description": "Товари, постачальники, замовлення: фото, залишки, перерахунок тригерами.",
+      "icon": "bi-box-seam",
+      "version": 1,
+      "file": "templates/inventory.json",
+      "hasSampleData": true
+    },
+    {
+      "id": "hr",
+      "title": "Кадри / HR",
+      "description": "Співробітники, відділи, відпустки: календар, узгодження, привітання з ДН.",
+      "icon": "bi-person-badge",
+      "version": 1,
+      "file": "templates/hr.json",
+      "hasSampleData": true
+    },
+    {
+      "id": "content",
+      "title": "Контент-план",
+      "description": "Публікації, кампанії, канали: youtube, календар, kanban, інтеграції.",
+      "icon": "bi-megaphone",
+      "version": 1,
+      "file": "templates/content.json",
+      "hasSampleData": true
     }
-  ],
-  "version": 1
+  ]
 }

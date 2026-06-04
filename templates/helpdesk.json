@@ -1,0 +1,948 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-04T19:35:47Z",
+ "tables": {
+  "app_settings": [
+   {
+    "key": "app_title",
+    "value": "Helpdesk"
+   },
+   {
+    "key": "home_title",
+    "value": "Тех. підтримка"
+   },
+   {
+    "key": "home_text",
+    "value": "Заявки, агенти, база знань. Telegram-бот, webhook, авто-призначення, ескалація."
+   },
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   }
+  ],
+  "dashboards": [
+   {
+    "color": "#0d6efd",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-speedometer2",
+    "id": 1,
+    "title": "Підтримка",
+    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Відкриті\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"neq\",\"value\":\"Закрита\"}],\"icon\":\"bi-folder2-open\",\"color\":\"#fd7e14\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Нові\",\"type_id\":2,\"field\":\"\",\"fn\":\"count\",\"filters\":[{\"field\":\"status\",\"op\":\"eq\",\"value\":\"Нова\"}],\"icon\":\"bi-bell\",\"color\":\"#dc3545\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Заявки за агентом\",\"type_id\":2,\"group_by\":\"agent\",\"metric_fn\":\"count\",\"sort_dir\":\"desc\",\"group_label\":\"Агент\",\"metric_label\":\"К-сть\"}\n\t]"
+   }
+  ],
+  "perm_presets": [
+   {
+    "built_in": 0,
+    "id": 2,
+    "name": "Агент підтримки",
+    "perms_json": "[\"entity:tickets:read\",\"entity:tickets:create\",\"entity:tickets:edit\",\"entity:tickets:manage_views\",\"entity:kb:read\",\"entity:agents:read\"]"
+   }
+  ],
+  "pivots": [],
+  "schedules": [
+   {
+    "action_kind": "script",
+    "body": "",
+    "channel": "",
+    "created_at": "2026-06-04T22:35:47+03:00",
+    "cron_expr": "0 * * * *",
+    "done": 0,
+    "enabled": 1,
+    "id": 1,
+    "last_error": "",
+    "last_run": "",
+    "last_status": "",
+    "name": "Ескалація щогодини",
+    "parse_mode": "HTML",
+    "run_at": "",
+    "script_id": 5,
+    "subject": "",
+    "target": "",
+    "when_kind": "cron"
+   }
+  ],
+  "schema_fields": [
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 1,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Імʼя",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "email",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 2,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "email",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Email",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 3,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "team",
+    "options_json": "[{\"value\":\"L1\",\"color\":\"#0dcaf0\"},{\"value\":\"L2\",\"color\":\"#fd7e14\"},{\"value\":\"L3\",\"color\":\"#dc3545\"}]",
+    "required": 0,
+    "sort_order": 2,
+    "title": "Команда",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "auto_number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 4,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "num",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 0,
+    "title": "№",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 5,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "subject",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 1,
+    "title": "Тема",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "rich_text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 6,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "description",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Опис",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "email",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 7,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "requester_email",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Email заявника",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 8,
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "agent",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Агент",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "rating",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 9,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "priority",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 5,
+    "title": "Пріоритет",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 10,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "status",
+    "options_json": "[{\"value\":\"Нова\",\"color\":\"#0dcaf0\"},{\"value\":\"В роботі\",\"color\":\"#fd7e14\"},{\"value\":\"Очікує\",\"color\":\"#ffc107\"},{\"value\":\"Закрита\",\"color\":\"#198754\"}]",
+    "required": 0,
+    "sort_order": 6,
+    "title": "Статус",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "multi_select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 11,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "tags",
+    "options_json": "[{\"value\":\"баг\",\"color\":\"#dc3545\"},{\"value\":\"питання\",\"color\":\"#0dcaf0\"},{\"value\":\"оплата\",\"color\":\"#198754\"}]",
+    "required": 0,
+    "sort_order": 7,
+    "title": "Теги",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 12,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "due",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 8,
+    "title": "Дедлайн (SLA)",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "attachment",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 13,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "files",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 9,
+    "title": "Вкладення",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 14,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "title",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Заголовок",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 15,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "category",
+    "options_json": "[{\"value\":\"Інструкції\",\"color\":\"#0d6efd\"},{\"value\":\"FAQ\",\"color\":\"#20c997\"}]",
+    "required": 0,
+    "sort_order": 1,
+    "title": "Категорія",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "rich_text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 16,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "body",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Текст",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "COUNT",
+    "hidden": 0,
+    "id": 17,
+    "lookup_coll": "agent",
+    "lookup_display": null,
+    "lookup_type": "tickets",
+    "lookup_value": null,
+    "name": "tickets_count",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Заявок",
+    "type_id": 1,
+    "width": null
+   }
+  ],
+  "schema_records": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 2,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 3,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 4,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 5,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 6,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 7,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 8,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "schema_relations": [
+   {
+    "child_type_id": 2,
+    "fk_field": "agent",
+    "icon": "bi-ticket",
+    "id": 1,
+    "on_delete": "clear",
+    "sort_order": 0,
+    "title": "Заявки",
+    "type_id": 1,
+    "visible_fields_json": "[\"subject\",\"status\",\"priority\"]"
+   }
+  ],
+  "schema_types": [
+   {
+    "calendar_tpl_json": "",
+    "color": "#6f42c1",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-person-gear",
+    "id": 1,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "agents",
+    "row_tpl_json": "",
+    "title": "Агенти"
+   },
+   {
+    "calendar_tpl_json": "{\"dateField\":\"due\",\"titleField\":\"subject\",\"colorField\":\"status\"}",
+    "color": "#0d6efd",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-ticket-detailed",
+    "id": 2,
+    "kanban_tpl_json": "{\"statusField\":\"status\",\"sumField\":\"\",\"fields\":[\"subject\",\"agent\",\"priority\"]}",
+    "kind": "entity",
+    "name": "tickets",
+    "row_tpl_json": "",
+    "title": "Заявки"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#198754",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "{\"mode\":\"fields\",\"header\":\"title\",\"fields\":[\"category\"],\"footer\":\"none\"}",
+    "icon": "bi-journal-text",
+    "id": 3,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "kb",
+    "row_tpl_json": "",
+    "title": "База знань"
+   }
+  ],
+  "schema_values": [
+   {
+    "field_id": 1,
+    "id": 1,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Андрій"
+   },
+   {
+    "field_id": 2,
+    "id": 2,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "andriy@support.example"
+   },
+   {
+    "field_id": 3,
+    "id": 3,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "L1"
+   },
+   {
+    "field_id": 3,
+    "id": 4,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "L2"
+   },
+   {
+    "field_id": 1,
+    "id": 5,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Богдана"
+   },
+   {
+    "field_id": 2,
+    "id": 6,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "bogdana@support.example"
+   },
+   {
+    "field_id": 10,
+    "id": 7,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "В роботі"
+   },
+   {
+    "field_id": 11,
+    "id": 8,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "баг"
+   },
+   {
+    "field_id": 6,
+    "id": 9,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "500 на /orders"
+   },
+   {
+    "field_id": 5,
+    "id": 10,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Не вантажиться сторінка"
+   },
+   {
+    "field_id": 7,
+    "id": 11,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "user1@mail.example"
+   },
+   {
+    "field_id": 8,
+    "id": 12,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 13,
+    "record_id": 3,
+    "value_num": 4,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 12,
+    "id": 14,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-06"
+   },
+   {
+    "field_id": 4,
+    "id": 15,
+    "record_id": 3,
+    "value_num": 1,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 11,
+    "id": 16,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "оплата,питання"
+   },
+   {
+    "field_id": 12,
+    "id": 17,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-10"
+   },
+   {
+    "field_id": 4,
+    "id": 18,
+    "record_id": 4,
+    "value_num": 2,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 5,
+    "id": 19,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Питання по рахунку"
+   },
+   {
+    "field_id": 7,
+    "id": 20,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "user2@mail.example"
+   },
+   {
+    "field_id": 8,
+    "id": 21,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": 2,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 22,
+    "record_id": 4,
+    "value_num": 2,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 23,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Очікує"
+   },
+   {
+    "field_id": 8,
+    "id": 24,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 25,
+    "record_id": 5,
+    "value_num": 5,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 26,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Нова"
+   },
+   {
+    "field_id": 11,
+    "id": 27,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "баг"
+   },
+   {
+    "field_id": 12,
+    "id": 28,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-05"
+   },
+   {
+    "field_id": 4,
+    "id": 29,
+    "record_id": 5,
+    "value_num": 3,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 5,
+    "id": 30,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Експорт не працює"
+   },
+   {
+    "field_id": 7,
+    "id": 31,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "user3@mail.example"
+   },
+   {
+    "field_id": 5,
+    "id": 32,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Дякую за допомогу"
+   },
+   {
+    "field_id": 7,
+    "id": 33,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "user4@mail.example"
+   },
+   {
+    "field_id": 8,
+    "id": 34,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": 2,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 35,
+    "record_id": 6,
+    "value_num": 1,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 36,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Закрита"
+   },
+   {
+    "field_id": 4,
+    "id": 37,
+    "record_id": 6,
+    "value_num": 4,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 15,
+    "id": 38,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Інструкції"
+   },
+   {
+    "field_id": 16,
+    "id": 39,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Натисніть «Забули пароль» на екрані входу."
+   },
+   {
+    "field_id": 14,
+    "id": 40,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Як скинути пароль"
+   },
+   {
+    "field_id": 14,
+    "id": 41,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Чому не приходить лист?"
+   },
+   {
+    "field_id": 15,
+    "id": 42,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "FAQ"
+   },
+   {
+    "field_id": 16,
+    "id": 43,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Перевірте теку «Спам»."
+   }
+  ],
+  "schema_views": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 1,
+    "name": "🗂 Дошка",
+    "sort_json": "",
+    "type_id": 2,
+    "user_id": null,
+    "view_mode": "kanban",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "[{\"id\":\"1\",\"fieldName\":\"status\",\"op\":\"neq\",\"value\":\"Закрита\",\"group\":\"and\"}]",
+    "id": 2,
+    "name": "🔥 Відкриті",
+    "sort_json": "[{\"fieldName\":\"priority\",\"direction\":\"desc\"}]",
+    "type_id": 2,
+    "user_id": null,
+    "view_mode": "grid",
+    "visible_fields": ""
+   }
+  ],
+  "scripts": [
+   {
+    "code": "if (ctx.text==='/new') { bot.setState('await_subject'); bot.reply('Опишіть проблему:'); }\nelse if (ctx.state==='await_subject') { var t = gloud.records.create('tickets', { subject: ctx.text, status:'Нова', priority:3 }); bot.setState(''); bot.reply('Заявку #'+t.num+' створено ✅'); }\nelse { bot.reply('Команди: /new — нова заявка'); }",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 1,
+    "kind": "bot",
+    "name": "Бот підтримки",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "gloud.records.create('tickets', { subject: ctx.params.subject || 'Без теми', requester_email: ctx.params.email || '', status:'Нова', priority:3 });\ngloud.output({ ok:true });",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 2,
+    "kind": "batch",
+    "name": "Заявка з сайту (webhook)",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "if (ctx.event==='before_create' \u0026\u0026 !ctx.record.agent) {\n  var a = gloud.query('agents').where('team','eq','L1').first();\n  if (a) return { agent: a.id };\n}",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 3,
+    "kind": "trigger",
+    "name": "Авто-призначення L1",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "if (ctx.event==='after_update' \u0026\u0026 ctx.record.status==='Закрита' \u0026\u0026 ctx.old.status!=='Закрита' \u0026\u0026 ctx.record.requester_email) {\n  gloud.email.send(ctx.record.requester_email, 'Вашу заявку закрито', 'Дякуємо за звернення!');\n}",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 4,
+    "kind": "trigger",
+    "name": "Лист при закритті",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "var today = gloud.now().substring(0,10);\nvar overdue = gloud.query('tickets').where('status','neq','Закрита').where('due','lt',today).all();\nif (overdue.length) gloud.telegram.send('support-alerts', '⚠️ Прострочено заявок: '+overdue.length);",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 5,
+    "kind": "batch",
+    "name": "Ескалація прострочених",
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "telegram_bots": [],
+  "telegram_channels": [
+   {
+    "chat_id": "",
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "name": "support-alerts",
+    "parse_mode": "HTML",
+    "token": ""
+   }
+  ],
+  "triggers": [
+   {
+    "enabled": 1,
+    "event": "before_create",
+    "filter_json": "[]",
+    "id": 1,
+    "name": "Авто-призначення",
+    "script_id": 3,
+    "sort_order": 0,
+    "type_id": 2
+   },
+   {
+    "enabled": 1,
+    "event": "after_update",
+    "filter_json": "[]",
+    "id": 2,
+    "name": "Email при закритті",
+    "script_id": 4,
+    "sort_order": 0,
+    "type_id": 2
+   }
+  ],
+  "webhooks": [
+   {
+    "created_at": "2026-06-04T19:35:47Z",
+    "enabled": 1,
+    "id": 1,
+    "key": "",
+    "name": "Форма на сайті",
+    "script_id": 2
+   }
+  ]
+ }
+}

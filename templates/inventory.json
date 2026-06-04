@@ -1,0 +1,1176 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-04T19:35:47Z",
+ "tables": {
+  "app_settings": [
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   },
+   {
+    "key": "app_title",
+    "value": "Склад"
+   },
+   {
+    "key": "home_title",
+    "value": "Склад і замовлення"
+   },
+   {
+    "key": "home_text",
+    "value": "Товари, постачальники, замовлення. Залишки рахуються тригерами."
+   }
+  ],
+  "dashboards": [
+   {
+    "color": "#198754",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-box-seam",
+    "id": 1,
+    "title": "Склад",
+    "widgets_json": "[\n\t\t{\"type\":\"metric\",\"title\":\"Вартість запасу\",\"type_id\":3,\"field\":\"stock\",\"fn\":\"sum\",\"icon\":\"bi-cash-stack\",\"color\":\"#198754\",\"suffix\":\" шт\",\"width\":4},\n\t\t{\"type\":\"metric\",\"title\":\"Замовлень\",\"type_id\":4,\"field\":\"\",\"fn\":\"count\",\"icon\":\"bi-receipt\",\"color\":\"#fd7e14\",\"width\":4},\n\t\t{\"type\":\"table\",\"title\":\"Залишок за категорією\",\"type_id\":3,\"group_by\":\"category\",\"metric_fn\":\"sum\",\"metric_field\":\"stock\",\"sort_dir\":\"desc\",\"group_label\":\"Категорія\",\"metric_label\":\"Залишок\"}\n\t]"
+   }
+  ],
+  "perm_presets": [
+   {
+    "built_in": 0,
+    "id": 2,
+    "name": "Комірник",
+    "perms_json": "[\"entity:products:read\",\"entity:products:edit\",\"entity:orders:read\",\"entity:orders:create\",\"entity:orders:edit\",\"entity:items:read\",\"entity:items:create\",\"entity:categories:read\",\"entity:suppliers:read\"]"
+   }
+  ],
+  "pivots": [
+   {
+    "color": "#fd7e14",
+    "config_json": "{\"base_type_id\":5,\"joins\":[{\"alias\":\"p\",\"relation_id\":2,\"type_id\":3,\"fk_field\":\"product\",\"direction\":\"parent\",\"title\":\"Товар\"}],\"rows\":[{\"src\":\"p\",\"field\":\"name\"}],\"values\":[{\"src\":\"base\",\"field\":\"qty\",\"fn\":\"sum\",\"label\":\"Продано, шт\"}],\"options\":{\"show_row_totals\":true,\"show_grand_total\":true}}",
+    "created_at": "2026-06-04 22:35:47",
+    "icon": "bi-table",
+    "id": 1,
+    "title": "Продано за товаром"
+   }
+  ],
+  "schedules": [
+   {
+    "action_kind": "script",
+    "body": "",
+    "channel": "",
+    "created_at": "2026-06-04T22:35:47+03:00",
+    "cron_expr": "0 7 * * *",
+    "done": 0,
+    "enabled": 1,
+    "id": 1,
+    "last_error": "",
+    "last_run": "",
+    "last_status": "",
+    "name": "Перевірка залишків 7:00",
+    "parse_mode": "HTML",
+    "run_at": "",
+    "script_id": 3,
+    "subject": "",
+    "target": "",
+    "when_kind": "cron"
+   }
+  ],
+  "schema_fields": [
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 1,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Назва",
+    "type_id": 1,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 2,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Назва",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "email",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 3,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "email",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Email",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "phone",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 4,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "phone",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Телефон",
+    "type_id": 2,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 5,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "name",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 0,
+    "title": "Назва",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 6,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "sku",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Артикул",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 7,
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "category",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Категорія",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 8,
+    "lookup_coll": "2",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "supplier",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Постачальник",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "currency",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 9,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "price",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Ціна",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 10,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "stock",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 5,
+    "title": "Залишок",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 11,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "min_stock",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 6,
+    "title": "Мін. залишок",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "formula",
+    "format_json": null,
+    "formula": "{price} * {stock}",
+    "hidden": 0,
+    "id": 12,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "stock_value",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 7,
+    "title": "Вартість запасу",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "image",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 13,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "photo",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 8,
+    "title": "Фото",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "attachment",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 14,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "specs",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 9,
+    "title": "Специфікації",
+    "type_id": 3,
+    "width": null
+   },
+   {
+    "field_type": "auto_number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 15,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "num",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 0,
+    "title": "№",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "text",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 16,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "customer",
+    "options_json": null,
+    "required": 1,
+    "sort_order": 1,
+    "title": "Клієнт",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "date",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 17,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "date",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "Дата",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "select",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 18,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "status",
+    "options_json": "[{\"value\":\"Новий\",\"color\":\"#0dcaf0\"},{\"value\":\"Зібрано\",\"color\":\"#fd7e14\"},{\"value\":\"Відправлено\",\"color\":\"#0d6efd\"},{\"value\":\"Виконано\",\"color\":\"#198754\"}]",
+    "required": 0,
+    "sort_order": 3,
+    "title": "Статус",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 19,
+    "lookup_coll": "4",
+    "lookup_display": "num",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "order",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 0,
+    "title": "Замовлення",
+    "type_id": 5,
+    "width": null
+   },
+   {
+    "field_type": "lookup",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 20,
+    "lookup_coll": "3",
+    "lookup_display": "name",
+    "lookup_type": "schema",
+    "lookup_value": "id",
+    "name": "product",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Товар",
+    "type_id": 5,
+    "width": null
+   },
+   {
+    "field_type": "number",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 21,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "qty",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 2,
+    "title": "К-сть",
+    "type_id": 5,
+    "width": null
+   },
+   {
+    "field_type": "currency",
+    "format_json": null,
+    "formula": null,
+    "hidden": 0,
+    "id": 22,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "price",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 3,
+    "title": "Ціна",
+    "type_id": 5,
+    "width": null
+   },
+   {
+    "field_type": "formula",
+    "format_json": null,
+    "formula": "{qty} * {price}",
+    "hidden": 0,
+    "id": 23,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_type": null,
+    "lookup_value": null,
+    "name": "line_total",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Сума",
+    "type_id": 5,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "SUM",
+    "hidden": 0,
+    "id": 24,
+    "lookup_coll": "order",
+    "lookup_display": "price",
+    "lookup_type": "items",
+    "lookup_value": null,
+    "name": "total",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 4,
+    "title": "Разом",
+    "type_id": 4,
+    "width": null
+   },
+   {
+    "field_type": "rollup",
+    "format_json": null,
+    "formula": "COUNT",
+    "hidden": 0,
+    "id": 25,
+    "lookup_coll": "category",
+    "lookup_display": null,
+    "lookup_type": "products",
+    "lookup_value": null,
+    "name": "products_count",
+    "options_json": null,
+    "required": 0,
+    "sort_order": 1,
+    "title": "Товарів",
+    "type_id": 1,
+    "width": null
+   }
+  ],
+  "schema_records": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 2,
+    "type_id": 1,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 3,
+    "type_id": 2,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 4,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 5,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 6,
+    "type_id": 3,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 7,
+    "type_id": 4,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 8,
+    "type_id": 4,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 9,
+    "type_id": 5,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 10,
+    "type_id": 5,
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "id": 11,
+    "type_id": 5,
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "schema_relations": [
+   {
+    "child_type_id": 5,
+    "fk_field": "order",
+    "icon": "bi-list-ul",
+    "id": 1,
+    "on_delete": "cascade",
+    "sort_order": 0,
+    "title": "Позиції",
+    "type_id": 4,
+    "visible_fields_json": "[\"product\",\"qty\",\"price\"]"
+   },
+   {
+    "child_type_id": 5,
+    "fk_field": "product",
+    "icon": "bi-receipt",
+    "id": 2,
+    "on_delete": "restrict",
+    "sort_order": 0,
+    "title": "У замовленнях",
+    "type_id": 3,
+    "visible_fields_json": "[\"order\",\"qty\"]"
+   },
+   {
+    "child_type_id": 3,
+    "fk_field": "category",
+    "icon": "bi-box-seam",
+    "id": 3,
+    "on_delete": "clear",
+    "sort_order": 0,
+    "title": "Товари",
+    "type_id": 1,
+    "visible_fields_json": "[\"name\",\"price\",\"stock\"]"
+   }
+  ],
+  "schema_types": [
+   {
+    "calendar_tpl_json": "",
+    "color": "#6c757d",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-tags",
+    "id": 1,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "categories",
+    "row_tpl_json": "",
+    "title": "Категорії"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#0dcaf0",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-truck",
+    "id": 2,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "suppliers",
+    "row_tpl_json": "",
+    "title": "Постачальники"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#198754",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "{\"mode\":\"fields\",\"header\":\"name\",\"fields\":[\"price\",\"stock\",\"category\"],\"footer\":\"sku\"}",
+    "icon": "bi-box-seam",
+    "id": 3,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "products",
+    "row_tpl_json": "",
+    "title": "Товари"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#fd7e14",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-receipt",
+    "id": 4,
+    "kanban_tpl_json": "{\"statusField\":\"status\",\"sumField\":\"total\",\"fields\":[\"customer\",\"date\",\"total\"]}",
+    "kind": "entity",
+    "name": "orders",
+    "row_tpl_json": "",
+    "title": "Замовлення"
+   },
+   {
+    "calendar_tpl_json": "",
+    "color": "#20c997",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "gallery_tpl_json": "",
+    "icon": "bi-list-ul",
+    "id": 5,
+    "kanban_tpl_json": "",
+    "kind": "entity",
+    "name": "items",
+    "row_tpl_json": "",
+    "title": "Позиції"
+   }
+  ],
+  "schema_values": [
+   {
+    "field_id": 1,
+    "id": 1,
+    "record_id": 1,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Електроніка"
+   },
+   {
+    "field_id": 1,
+    "id": 2,
+    "record_id": 2,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Аксесуари"
+   },
+   {
+    "field_id": 2,
+    "id": 3,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "TechDist"
+   },
+   {
+    "field_id": 3,
+    "id": 4,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "sales@techdist.example"
+   },
+   {
+    "field_id": 4,
+    "id": 5,
+    "record_id": 3,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "+380441234567"
+   },
+   {
+    "field_id": 8,
+    "id": 6,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": 3,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 7,
+    "record_id": 4,
+    "value_num": 1200,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 8,
+    "record_id": 4,
+    "value_num": 25,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 11,
+    "id": 9,
+    "record_id": 4,
+    "value_num": 5,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 5,
+    "id": 10,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Навушники X"
+   },
+   {
+    "field_id": 6,
+    "id": 11,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "HD-X"
+   },
+   {
+    "field_id": 7,
+    "id": 12,
+    "record_id": 4,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 13,
+    "record_id": 5,
+    "value_num": 150,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 14,
+    "record_id": 5,
+    "value_num": 3,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 11,
+    "id": 15,
+    "record_id": 5,
+    "value_num": 10,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 5,
+    "id": 16,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Кабель USB-C"
+   },
+   {
+    "field_id": 6,
+    "id": 17,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "CBL-C"
+   },
+   {
+    "field_id": 7,
+    "id": 18,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": 2,
+    "value_text": null
+   },
+   {
+    "field_id": 8,
+    "id": 19,
+    "record_id": 5,
+    "value_num": null,
+    "value_ref": 3,
+    "value_text": null
+   },
+   {
+    "field_id": 5,
+    "id": 20,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Колонка Mini"
+   },
+   {
+    "field_id": 6,
+    "id": 21,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "SPK-M"
+   },
+   {
+    "field_id": 7,
+    "id": 22,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": 1,
+    "value_text": null
+   },
+   {
+    "field_id": 8,
+    "id": 23,
+    "record_id": 6,
+    "value_num": null,
+    "value_ref": 3,
+    "value_text": null
+   },
+   {
+    "field_id": 9,
+    "id": 24,
+    "record_id": 6,
+    "value_num": 900,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 10,
+    "id": 25,
+    "record_id": 6,
+    "value_num": 12,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 11,
+    "id": 26,
+    "record_id": 6,
+    "value_num": 4,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 16,
+    "id": 27,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Магазин №1"
+   },
+   {
+    "field_id": 17,
+    "id": 28,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-02"
+   },
+   {
+    "field_id": 18,
+    "id": 29,
+    "record_id": 7,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Виконано"
+   },
+   {
+    "field_id": 15,
+    "id": 30,
+    "record_id": 7,
+    "value_num": 1,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 16,
+    "id": 31,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "ФОП Сидоренко"
+   },
+   {
+    "field_id": 17,
+    "id": 32,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "2026-06-04"
+   },
+   {
+    "field_id": 18,
+    "id": 33,
+    "record_id": 8,
+    "value_num": null,
+    "value_ref": null,
+    "value_text": "Новий"
+   },
+   {
+    "field_id": 15,
+    "id": 34,
+    "record_id": 8,
+    "value_num": 2,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 35,
+    "record_id": 9,
+    "value_num": 2,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 22,
+    "id": 36,
+    "record_id": 9,
+    "value_num": 1200,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 37,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": 7,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 38,
+    "record_id": 9,
+    "value_num": null,
+    "value_ref": 4,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 39,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": 5,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 40,
+    "record_id": 10,
+    "value_num": 5,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 22,
+    "id": 41,
+    "record_id": 10,
+    "value_num": 150,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 42,
+    "record_id": 10,
+    "value_num": null,
+    "value_ref": 7,
+    "value_text": null
+   },
+   {
+    "field_id": 19,
+    "id": 43,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": 8,
+    "value_text": null
+   },
+   {
+    "field_id": 20,
+    "id": 44,
+    "record_id": 11,
+    "value_num": null,
+    "value_ref": 6,
+    "value_text": null
+   },
+   {
+    "field_id": 21,
+    "id": 45,
+    "record_id": 11,
+    "value_num": 1,
+    "value_ref": null,
+    "value_text": null
+   },
+   {
+    "field_id": 22,
+    "id": 46,
+    "record_id": 11,
+    "value_num": 900,
+    "value_ref": null,
+    "value_text": null
+   }
+  ],
+  "schema_views": [
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 1,
+    "name": "🗃 Каталог",
+    "sort_json": "",
+    "type_id": 3,
+    "user_id": null,
+    "view_mode": "gallery",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "[{\"id\":\"1\",\"fieldName\":\"stock\",\"op\":\"lte\",\"value\":\"5\",\"group\":\"and\"}]",
+    "id": 2,
+    "name": "⚠️ Мало на складі",
+    "sort_json": "",
+    "type_id": 3,
+    "user_id": null,
+    "view_mode": "grid",
+    "visible_fields": ""
+   },
+   {
+    "created_at": "2026-06-04 22:35:47",
+    "extras_json": "{}",
+    "filters_json": "",
+    "id": 3,
+    "name": "🗂 Статуси",
+    "sort_json": "",
+    "type_id": 4,
+    "user_id": null,
+    "view_mode": "kanban",
+    "visible_fields": ""
+   }
+  ],
+  "scripts": [
+   {
+    "code": "if (ctx.event==='before_create' \u0026\u0026 ctx.record.product) {\n  var p = gloud.records.get(ctx.record.product);\n  if (p \u0026\u0026 p.stock \u003c ctx.record.qty) gloud.fail('Недостатньо на складі: '+p.name+' (залишок '+p.stock+')');\n}",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 1,
+    "kind": "trigger",
+    "name": "Перевірка залишку",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "if (ctx.event==='after_create' \u0026\u0026 ctx.record.product) {\n  var p = gloud.records.get(ctx.record.product);\n  if (p) gloud.records.update(p.id, { stock: p.stock - ctx.record.qty });\n}",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 2,
+    "kind": "trigger",
+    "name": "Списання залишку",
+    "updated_at": "2026-06-04 22:35:47"
+   },
+   {
+    "code": "var all = gloud.query('products').all();\nvar low = all.filter(function(p){ return p.stock \u003c= p.min_stock; });\nif (low.length) gloud.telegram.send('warehouse', '⚠️ Поповнити: '+low.map(function(p){return p.name;}).join(', '));",
+    "created_at": "2026-06-04 22:35:47",
+    "description": "",
+    "enabled": 1,
+    "id": 3,
+    "kind": "batch",
+    "name": "Алерт низького залишку",
+    "updated_at": "2026-06-04 22:35:47"
+   }
+  ],
+  "telegram_bots": [],
+  "telegram_channels": [
+   {
+    "chat_id": "",
+    "created_at": "2026-06-04 22:35:47",
+    "id": 1,
+    "name": "warehouse",
+    "parse_mode": "HTML",
+    "token": ""
+   }
+  ],
+  "triggers": [
+   {
+    "enabled": 1,
+    "event": "before_create",
+    "filter_json": "[]",
+    "id": 1,
+    "name": "Контроль залишку",
+    "script_id": 1,
+    "sort_order": 0,
+    "type_id": 5
+   },
+   {
+    "enabled": 1,
+    "event": "after_create",
+    "filter_json": "[]",
+    "id": 2,
+    "name": "Списання при позиції",
+    "script_id": 2,
+    "sort_order": 0,
+    "type_id": 5
+   }
+  ],
+  "webhooks": []
+ }
+}
