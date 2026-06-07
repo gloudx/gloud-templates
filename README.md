@@ -29,7 +29,10 @@ templates/<id>.json     — файлы шаблонов
       "icon": "bi-box",
       "version": 1,
       "file": "templates/demo.json",
-      "hasSampleData": false
+      "hasSampleData": false,
+      "category": "Документообіг",
+      "accent": "#0ea5e9",
+      "highlights": ["Workflow", "PDF", "Нумерація"]
     }
   ]
 }
@@ -39,6 +42,9 @@ templates/<id>.json     — файлы шаблонов
   новую версию при синхронизации.
 - `hasSampleData: true` — файл содержит и тестовые данные (`schema_records`,
   `schema_values`); при импорте пользователь сможет включить их галочкой.
+- `category`, `accent`, `highlights` — **необязательные** витринные поля для
+  карточки в библиотеке: категория (бейдж), hex-цвет обложки и до 4 коротких
+  чипа «что внутри». Старые `index.json` без них работают как раньше.
 
 ### Файл шаблона (`templates/<id>.json`)
 
