@@ -8,7 +8,10 @@
       "icon": "bi-graph-up-arrow",
       "version": 1,
       "file": "templates/crm.json",
-      "hasSampleData": true
+      "hasSampleData": true,
+      "category": "Продажі",
+      "accent": "#6366f1",
+      "highlights": ["3 сутності", "Воронка", "Дашборд", "Нагадування"]
     },
     {
       "id": "helpdesk",
@@ -17,7 +20,10 @@
       "icon": "bi-headset",
       "version": 1,
       "file": "templates/helpdesk.json",
-      "hasSampleData": true
+      "hasSampleData": true,
+      "category": "Сервіс",
+      "accent": "#0ea5e9",
+      "highlights": ["Telegram-бот", "Webhook", "Авто-призначення", "База знань"]
     },
     {
       "id": "projects",
@@ -26,7 +32,10 @@
       "icon": "bi-kanban",
       "version": 1,
       "file": "templates/projects.json",
-      "hasSampleData": true
+      "hasSampleData": true,
+      "category": "Проєкти",
+      "accent": "#8b5cf6",
+      "highlights": ["Kanban", "Календар", "Облік часу", "Зведена"]
     },
     {
       "id": "inventory",
@@ -35,7 +44,10 @@
       "icon": "bi-box-seam",
       "version": 1,
       "file": "templates/inventory.json",
-      "hasSampleData": true
+      "hasSampleData": true,
+      "category": "Склад",
+      "accent": "#f59e0b",
+      "highlights": ["Фото товарів", "Залишки", "Постачальники", "Тригери"]
     },
     {
       "id": "hr",
@@ -44,7 +56,10 @@
       "icon": "bi-person-badge",
       "version": 1,
       "file": "templates/hr.json",
-      "hasSampleData": true
+      "hasSampleData": true,
+      "category": "Кадри",
+      "accent": "#10b981",
+      "highlights": ["Календар", "Узгодження", "Відпустки", "Привітання з ДН"]
     },
     {
       "id": "content",
@@ -53,7 +68,10 @@
       "icon": "bi-megaphone",
       "version": 1,
       "file": "templates/content.json",
-      "hasSampleData": true
+      "hasSampleData": true,
+      "category": "Маркетинг",
+      "accent": "#ec4899",
+      "highlights": ["Календар", "Kanban", "YouTube", "Інтеграції"]
     }
   ]
 }
