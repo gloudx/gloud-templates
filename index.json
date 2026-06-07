@@ -72,6 +72,42 @@
       "category": "Маркетинг",
       "accent": "#ec4899",
       "highlights": ["Календар", "Kanban", "YouTube", "Інтеграції"]
+    },
+    {
+      "id": "documents",
+      "title": "Документообіг — рахунки",
+      "description": "Рахунки, позиції, контрагенти: нумерація, стани (workflow) і генерація PDF.",
+      "icon": "bi-receipt",
+      "version": 1,
+      "file": "templates/documents.json",
+      "hasSampleData": true,
+      "category": "Документообіг",
+      "accent": "#0ea5e9",
+      "highlights": ["Workflow", "Нумерація", "Генерація PDF", "Дашборд"]
+    },
+    {
+      "id": "contracts",
+      "title": "Договори / узгодження",
+      "description": "Договори з етапами узгодження, правом на підписання, нумерацією та PDF.",
+      "icon": "bi-file-earmark-text",
+      "version": 1,
+      "file": "templates/contracts.json",
+      "hasSampleData": true,
+      "category": "Документообіг",
+      "accent": "#7c3aed",
+      "highlights": ["Узгодження", "Права на перехід", "PDF", "Скани"]
+    },
+    {
+      "id": "booking",
+      "title": "Бронювання / записи",
+      "description": "Послуги, майстри, записи клієнтів: календар, kanban і щоденне нагадування.",
+      "icon": "bi-calendar-check",
+      "version": 1,
+      "file": "templates/booking.json",
+      "hasSampleData": true,
+      "category": "Сервіс",
+      "accent": "#f59e0b",
+      "highlights": ["Календар", "Kanban", "Нагадування"]
     }
   ]
 }

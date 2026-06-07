@@ -1,0 +1,877 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-07T12:00:00Z",
+ "tables": {
+  "schema_types": [
+   {
+    "id": 1,
+    "name": "counterparties",
+    "title": "Контрагенти",
+    "description": "Клієнти та постачальники",
+    "icon": "bi-people",
+    "color": "#6366f1",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "name": "invoices",
+    "title": "Рахунки",
+    "description": "Рахунки-фактури з нумерацією та станами",
+    "icon": "bi-receipt",
+    "color": "#0ea5e9",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "{\"statusField\": \"status\", \"sumField\": \"total\", \"fields\": [\"number\", \"counterparty\"]}",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 3,
+    "name": "invoice_items",
+    "title": "Позиції",
+    "description": "Рядки рахунку",
+    "icon": "bi-list-ul",
+    "color": "#94a3b8",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "nav_hidden": 1,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schema_fields": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "name": "name",
+    "title": "Назва",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 2,
+    "type_id": 1,
+    "name": "edrpou",
+    "title": "ЄДРПОУ / ІПН",
+    "field_type": "text",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 3,
+    "type_id": 1,
+    "name": "email",
+    "title": "Email",
+    "field_type": "email",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 4,
+    "type_id": 1,
+    "name": "phone",
+    "title": "Телефон",
+    "field_type": "phone",
+    "sort_order": 40,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 5,
+    "type_id": 1,
+    "name": "created_by",
+    "title": "Ким створено",
+    "field_type": "created_by",
+    "sort_order": 50,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 1,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 10,
+    "type_id": 2,
+    "name": "number",
+    "title": "Номер",
+    "field_type": "doc_number",
+    "sort_order": 10,
+    "required": 0,
+    "options_json": "{\"pattern\": \"INV-{YYYY}-{seq:0000}\", \"reset\": \"year\"}",
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 11,
+    "type_id": 2,
+    "name": "counterparty",
+    "title": "Контрагент",
+    "field_type": "lookup",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": "schema",
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 12,
+    "type_id": 2,
+    "name": "issue_date",
+    "title": "Дата виписки",
+    "field_type": "date",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 13,
+    "type_id": 2,
+    "name": "due_date",
+    "title": "Оплатити до",
+    "field_type": "date",
+    "sort_order": 40,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 14,
+    "type_id": 2,
+    "name": "status",
+    "title": "Статус",
+    "field_type": "select",
+    "sort_order": 50,
+    "required": 0,
+    "options_json": "[{\"value\": \"Чернетка\", \"color\": \"#6c757d\"}, {\"value\": \"Виставлено\", \"color\": \"#0d6efd\"}, {\"value\": \"Оплачено\", \"color\": \"#198754\"}, {\"value\": \"Скасовано\", \"color\": \"#dc3545\"}]",
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 15,
+    "type_id": 2,
+    "name": "total",
+    "title": "Разом",
+    "field_type": "rollup",
+    "sort_order": 60,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": "invoice_items",
+    "lookup_coll": "invoice",
+    "lookup_display": "line_total",
+    "lookup_value": "id",
+    "formula": "SUM",
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 16,
+    "type_id": 2,
+    "name": "notes",
+    "title": "Примітки",
+    "field_type": "rich_text",
+    "sort_order": 70,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 30,
+    "type_id": 3,
+    "name": "description",
+    "title": "Опис",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 31,
+    "type_id": 3,
+    "name": "invoice",
+    "title": "Рахунок",
+    "field_type": "lookup",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": "schema",
+    "lookup_coll": "2",
+    "lookup_display": "number",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 32,
+    "type_id": 3,
+    "name": "qty",
+    "title": "К-сть",
+    "field_type": "number",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 33,
+    "type_id": 3,
+    "name": "price",
+    "title": "Ціна",
+    "field_type": "currency",
+    "sort_order": 40,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 34,
+    "type_id": 3,
+    "name": "line_total",
+    "title": "Сума",
+    "field_type": "formula",
+    "sort_order": 50,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": "{qty} * {price}",
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   }
+  ],
+  "schema_relations": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "child_type_id": 3,
+    "fk_field": "invoice",
+    "title": "Позиції",
+    "icon": "bi-list-ul",
+    "sort_order": 10,
+    "visible_fields_json": "[\"description\", \"qty\", \"price\", \"line_total\"]",
+    "on_delete": "cascade"
+   },
+   {
+    "id": 2,
+    "type_id": 1,
+    "child_type_id": 2,
+    "fk_field": "counterparty",
+    "title": "Рахунки",
+    "icon": "bi-receipt",
+    "sort_order": 10,
+    "visible_fields_json": "[\"number\", \"status\", \"total\"]",
+    "on_delete": "restrict"
+   }
+  ],
+  "schema_views": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "name": "📊 Канбан",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "visible_fields": "[]",
+    "view_mode": "kanban",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "type_id": 2,
+    "name": "Усі рахунки",
+    "filters_json": "[]",
+    "sort_json": "[{\"fieldName\": \"issue_date\", \"direction\": \"desc\"}]",
+    "visible_fields": "[]",
+    "view_mode": "grid",
+    "extras_json": "{\"agg\": {\"total\": \"sum\"}}",
+    "user_id": null,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "workflows": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "name": "Життєвий цикл рахунку",
+    "status_field": "status",
+    "enabled": 1,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "workflow_states": [
+   {
+    "id": 1,
+    "workflow_id": 1,
+    "key": "Чернетка",
+    "label": "Чернетка",
+    "color": "#6c757d",
+    "sort_order": 10,
+    "is_initial": 1,
+    "is_final": 0
+   },
+   {
+    "id": 2,
+    "workflow_id": 1,
+    "key": "Виставлено",
+    "label": "Виставлено",
+    "color": "#0d6efd",
+    "sort_order": 20,
+    "is_initial": 0,
+    "is_final": 0
+   },
+   {
+    "id": 3,
+    "workflow_id": 1,
+    "key": "Оплачено",
+    "label": "Оплачено",
+    "color": "#198754",
+    "sort_order": 30,
+    "is_initial": 0,
+    "is_final": 1
+   },
+   {
+    "id": 4,
+    "workflow_id": 1,
+    "key": "Скасовано",
+    "label": "Скасовано",
+    "color": "#dc3545",
+    "sort_order": 40,
+    "is_initial": 0,
+    "is_final": 1
+   }
+  ],
+  "workflow_transitions": [
+   {
+    "id": 1,
+    "workflow_id": 1,
+    "name": "Виставити",
+    "from_state": "Чернетка",
+    "to_state": "Виставлено",
+    "guard_json": "{}",
+    "require_fields": "[\"counterparty\", \"due_date\"]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 10,
+    "enabled": 1
+   },
+   {
+    "id": 2,
+    "workflow_id": 1,
+    "name": "Оплатити",
+    "from_state": "Виставлено",
+    "to_state": "Оплачено",
+    "guard_json": "{}",
+    "require_fields": "[]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 20,
+    "enabled": 1
+   },
+   {
+    "id": 3,
+    "workflow_id": 1,
+    "name": "Скасувати",
+    "from_state": "Чернетка",
+    "to_state": "Скасовано",
+    "guard_json": "{}",
+    "require_fields": "[]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 30,
+    "enabled": 1
+   },
+   {
+    "id": 4,
+    "workflow_id": 1,
+    "name": "Скасувати",
+    "from_state": "Виставлено",
+    "to_state": "Скасовано",
+    "guard_json": "{}",
+    "require_fields": "[]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 40,
+    "enabled": 1
+   }
+  ],
+  "doc_templates": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "name": "Рахунок (PDF)",
+    "backend": "pdfmake",
+    "body_json": "{\"pageSize\": \"A4\", \"pageMargins\": [40, 40, 40, 40], \"content\": [{\"text\": \"РАХУНОК {{header.number}}\", \"fontSize\": 18, \"bold\": true, \"margin\": [0, 0, 0, 8]}, {\"text\": \"Контрагент: {{header.counterparty}}\", \"margin\": [0, 0, 0, 2]}, {\"columns\": [{\"text\": \"Дата виписки: {{header.issue_date}}\"}, {\"text\": \"Оплатити до: {{header.due_date}}\"}], \"margin\": [0, 0, 0, 12]}, {\"table\": {\"headerRows\": 1, \"widths\": [\"*\", 40, 70, 70], \"body\": [[{\"text\": \"Опис\", \"bold\": true}, {\"text\": \"К-сть\", \"bold\": true}, {\"text\": \"Ціна\", \"bold\": true}, {\"text\": \"Сума\", \"bold\": true}], {\"$forEach\": \"lines.items\", \"row\": [\"{{item.description}}\", \"{{item.qty}}\", \"{{item.price}}\", \"{{item.line_total}}\"]}]}, \"margin\": [0, 0, 0, 12]}, {\"text\": \"Разом до сплати: {{header.total}}\", \"fontSize\": 13, \"bold\": true, \"alignment\": \"right\"}, {\"text\": \"Статус: {{header.status}}\", \"margin\": [0, 8, 0, 0], \"color\": \"#666\"}, {\"text\": \"Сформовано: {{meta.now}}\", \"fontSize\": 8, \"color\": \"#999\", \"margin\": [0, 20, 0, 0]}]}",
+    "bindings_json": "{\"lines\": [{\"name\": \"items\", \"relation_id\": 1}]}",
+    "options_json": "{}",
+    "enabled": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "app_settings": [
+   {
+    "key": "app_title",
+    "value": "Документообіг"
+   },
+   {
+    "key": "home_title",
+    "value": "Документообіг"
+   },
+   {
+    "key": "home_text",
+    "value": "Рахунки з нумерацією, станами (workflow) і генерацією PDF. Створіть рахунок, додайте позиції, проведіть через стани й сформуйте документ."
+   },
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   },
+   {
+    "key": "home_metrics_json",
+    "value": "[{\"type\": \"metric\", \"title\": \"Оплачено, сума\", \"type_id\": 2, \"field\": \"total\", \"fn\": \"sum\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Оплачено\"}], \"icon\": \"bi-cash-stack\", \"color\": \"#198754\", \"prefix\": \"₴\", \"width\": 4, \"id\": \"hm1\"}, {\"type\": \"metric\", \"title\": \"Виставлено рахунків\", \"type_id\": 2, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Виставлено\"}], \"icon\": \"bi-receipt\", \"color\": \"#0d6efd\", \"width\": 4, \"id\": \"hm2\"}]"
+   }
+  ],
+  "dashboards": [
+   {
+    "id": 1,
+    "title": "Фінанси",
+    "icon": "bi-graph-up",
+    "color": "#0ea5e9",
+    "created_at": "2026-06-07 12:00:00",
+    "widgets_json": "[{\"type\": \"metric\", \"title\": \"Оплачено\", \"type_id\": 2, \"field\": \"total\", \"fn\": \"sum\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Оплачено\"}], \"icon\": \"bi-cash-stack\", \"color\": \"#198754\", \"prefix\": \"₴\", \"width\": 4, \"id\": \"w1\"}, {\"type\": \"metric\", \"title\": \"До оплати\", \"type_id\": 2, \"field\": \"total\", \"fn\": \"sum\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Виставлено\"}], \"icon\": \"bi-hourglass-split\", \"color\": \"#fd7e14\", \"prefix\": \"₴\", \"width\": 4, \"id\": \"w2\"}, {\"type\": \"table\", \"title\": \"Рахунки за станом\", \"type_id\": 2, \"group_by\": \"status\", \"metric_fn\": \"sum\", \"metric_field\": \"total\", \"sort_dir\": \"desc\", \"group_label\": \"Стан\", \"metric_label\": \"Сума\", \"id\": \"w3\"}]"
+   }
+  ],
+  "pivots": [
+   {
+    "id": 1,
+    "title": "Рахунки: контрагент × місяць",
+    "icon": "bi-table",
+    "color": "#0ea5e9",
+    "created_at": "2026-06-07 12:00:00",
+    "config_json": "{\"base_type_id\": 2, \"rows\": [{\"src\": \"base\", \"field\": \"counterparty\"}], \"columns\": [{\"src\": \"base\", \"field\": \"issue_date\", \"bucket\": \"month\"}], \"values\": [{\"src\": \"base\", \"field\": \"total\", \"fn\": \"sum\", \"label\": \"Сума\", \"prefix\": \"₴\"}], \"options\": {\"show_row_totals\": true, \"show_col_totals\": true, \"show_grand_total\": true}}"
+   }
+  ],
+  "schema_records": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "type_id": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 3,
+    "type_id": 2,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 4,
+    "type_id": 2,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 5,
+    "type_id": 3,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 6,
+    "type_id": 3,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 7,
+    "type_id": 3,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schema_values": [
+   {
+    "id": 1,
+    "record_id": 1,
+    "field_id": 1,
+    "value_text": "ТОВ «Альфа»",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 2,
+    "record_id": 1,
+    "field_id": 2,
+    "value_text": "12345678",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 3,
+    "record_id": 1,
+    "field_id": 3,
+    "value_text": "alfa@example.ua",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 4,
+    "record_id": 1,
+    "field_id": 4,
+    "value_text": "+380441234567",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 5,
+    "record_id": 2,
+    "field_id": 1,
+    "value_text": "ФОП Петренко",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 6,
+    "record_id": 2,
+    "field_id": 2,
+    "value_text": "2233445566",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 7,
+    "record_id": 2,
+    "field_id": 3,
+    "value_text": "petrenko@example.ua",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 8,
+    "record_id": 2,
+    "field_id": 4,
+    "value_text": "+380501112233",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 9,
+    "record_id": 3,
+    "field_id": 10,
+    "value_text": "INV-2026-0001",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 10,
+    "record_id": 3,
+    "field_id": 11,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 1
+   },
+   {
+    "id": 11,
+    "record_id": 3,
+    "field_id": 12,
+    "value_text": "2026-05-01",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 12,
+    "record_id": 3,
+    "field_id": 13,
+    "value_text": "2026-05-15",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 13,
+    "record_id": 3,
+    "field_id": 14,
+    "value_text": "Оплачено",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 14,
+    "record_id": 4,
+    "field_id": 10,
+    "value_text": "INV-2026-0002",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 15,
+    "record_id": 4,
+    "field_id": 11,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 2
+   },
+   {
+    "id": 16,
+    "record_id": 4,
+    "field_id": 12,
+    "value_text": "2026-05-20",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 17,
+    "record_id": 4,
+    "field_id": 13,
+    "value_text": "2026-06-05",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 18,
+    "record_id": 4,
+    "field_id": 14,
+    "value_text": "Виставлено",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 19,
+    "record_id": 5,
+    "field_id": 30,
+    "value_text": "Консультація",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 20,
+    "record_id": 5,
+    "field_id": 31,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 3
+   },
+   {
+    "id": 21,
+    "record_id": 5,
+    "field_id": 32,
+    "value_text": null,
+    "value_num": 2,
+    "value_ref": null
+   },
+   {
+    "id": 22,
+    "record_id": 5,
+    "field_id": 33,
+    "value_text": null,
+    "value_num": 1500,
+    "value_ref": null
+   },
+   {
+    "id": 23,
+    "record_id": 6,
+    "field_id": 30,
+    "value_text": "Розробка модуля",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 24,
+    "record_id": 6,
+    "field_id": 31,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 3
+   },
+   {
+    "id": 25,
+    "record_id": 6,
+    "field_id": 32,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 26,
+    "record_id": 6,
+    "field_id": 33,
+    "value_text": null,
+    "value_num": 8000,
+    "value_ref": null
+   },
+   {
+    "id": 27,
+    "record_id": 7,
+    "field_id": 30,
+    "value_text": "Підписка на сервіс",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 28,
+    "record_id": 7,
+    "field_id": 31,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 4
+   },
+   {
+    "id": 29,
+    "record_id": 7,
+    "field_id": 32,
+    "value_text": null,
+    "value_num": 12,
+    "value_ref": null
+   },
+   {
+    "id": 30,
+    "record_id": 7,
+    "field_id": 33,
+    "value_text": null,
+    "value_num": 500,
+    "value_ref": null
+   }
+  ]
+ }
+}

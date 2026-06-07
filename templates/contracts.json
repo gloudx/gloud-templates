@@ -1,0 +1,587 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-07T12:00:00Z",
+ "tables": {
+  "schema_types": [
+   {
+    "id": 1,
+    "name": "counterparties",
+    "title": "Контрагенти",
+    "description": "Сторони договорів",
+    "icon": "bi-people",
+    "color": "#6366f1",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "name": "contracts",
+    "title": "Договори",
+    "description": "Договори з етапами узгодження, нумерацією та PDF",
+    "icon": "bi-file-earmark-text",
+    "color": "#7c3aed",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "{\"statusField\": \"status\", \"sumField\": \"amount\", \"fields\": [\"number\", \"counterparty\"]}",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schema_fields": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "name": "name",
+    "title": "Назва",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 2,
+    "type_id": 1,
+    "name": "edrpou",
+    "title": "ЄДРПОУ / ІПН",
+    "field_type": "text",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 3,
+    "type_id": 1,
+    "name": "email",
+    "title": "Email",
+    "field_type": "email",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 4,
+    "type_id": 1,
+    "name": "phone",
+    "title": "Телефон",
+    "field_type": "phone",
+    "sort_order": 40,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 10,
+    "type_id": 2,
+    "name": "subject",
+    "title": "Предмет договору",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 11,
+    "type_id": 2,
+    "name": "number",
+    "title": "Номер",
+    "field_type": "doc_number",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": "{\"pattern\": \"CT-{YYYY}-{seq:000}\", \"reset\": \"year\"}",
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 12,
+    "type_id": 2,
+    "name": "counterparty",
+    "title": "Контрагент",
+    "field_type": "lookup",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": "schema",
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 13,
+    "type_id": 2,
+    "name": "sign_date",
+    "title": "Дата підписання",
+    "field_type": "date",
+    "sort_order": 40,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 14,
+    "type_id": 2,
+    "name": "amount",
+    "title": "Сума",
+    "field_type": "currency",
+    "sort_order": 50,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 15,
+    "type_id": 2,
+    "name": "status",
+    "title": "Статус",
+    "field_type": "select",
+    "sort_order": 60,
+    "required": 0,
+    "options_json": "[{\"value\": \"Чернетка\", \"color\": \"#6c757d\"}, {\"value\": \"На узгодженні\", \"color\": \"#f59e0b\"}, {\"value\": \"Підписано\", \"color\": \"#198754\"}, {\"value\": \"Архів\", \"color\": \"#64748b\"}]",
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 16,
+    "type_id": 2,
+    "name": "scan",
+    "title": "Скан підписаного",
+    "field_type": "attachment",
+    "sort_order": 70,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 17,
+    "type_id": 2,
+    "name": "notes",
+    "title": "Примітки",
+    "field_type": "rich_text",
+    "sort_order": 80,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   }
+  ],
+  "schema_relations": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "child_type_id": 2,
+    "fk_field": "counterparty",
+    "title": "Договори",
+    "icon": "bi-file-earmark-text",
+    "sort_order": 10,
+    "visible_fields_json": "[\"number\", \"subject\", \"status\", \"amount\"]",
+    "on_delete": "restrict"
+   }
+  ],
+  "schema_views": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "name": "📊 Канбан",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "visible_fields": "[]",
+    "view_mode": "kanban",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "type_id": 2,
+    "name": "Усі договори",
+    "filters_json": "[]",
+    "sort_json": "[{\"fieldName\": \"sign_date\", \"direction\": \"desc\"}]",
+    "visible_fields": "[]",
+    "view_mode": "grid",
+    "extras_json": "{\"agg\": {\"amount\": \"sum\"}}",
+    "user_id": null,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "workflows": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "name": "Узгодження договору",
+    "status_field": "status",
+    "enabled": 1,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "workflow_states": [
+   {
+    "id": 1,
+    "workflow_id": 1,
+    "key": "Чернетка",
+    "label": "Чернетка",
+    "color": "#6c757d",
+    "sort_order": 10,
+    "is_initial": 1,
+    "is_final": 0
+   },
+   {
+    "id": 2,
+    "workflow_id": 1,
+    "key": "На узгодженні",
+    "label": "На узгодженні",
+    "color": "#f59e0b",
+    "sort_order": 20,
+    "is_initial": 0,
+    "is_final": 0
+   },
+   {
+    "id": 3,
+    "workflow_id": 1,
+    "key": "Підписано",
+    "label": "Підписано",
+    "color": "#198754",
+    "sort_order": 30,
+    "is_initial": 0,
+    "is_final": 1
+   },
+   {
+    "id": 4,
+    "workflow_id": 1,
+    "key": "Архів",
+    "label": "Архів",
+    "color": "#64748b",
+    "sort_order": 40,
+    "is_initial": 0,
+    "is_final": 1
+   }
+  ],
+  "workflow_transitions": [
+   {
+    "id": 1,
+    "workflow_id": 1,
+    "name": "Подати на узгодження",
+    "from_state": "Чернетка",
+    "to_state": "На узгодженні",
+    "guard_json": "{}",
+    "require_fields": "[\"counterparty\", \"subject\"]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 10,
+    "enabled": 1
+   },
+   {
+    "id": 2,
+    "workflow_id": 1,
+    "name": "Підписати",
+    "from_state": "На узгодженні",
+    "to_state": "Підписано",
+    "guard_json": "{\"perm_keys\": [\"workflow:contracts:Підписати\"]}",
+    "require_fields": "[\"sign_date\"]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 20,
+    "enabled": 1
+   },
+   {
+    "id": 3,
+    "workflow_id": 1,
+    "name": "В архів",
+    "from_state": "Підписано",
+    "to_state": "Архів",
+    "guard_json": "{}",
+    "require_fields": "[]",
+    "hook_script_id": 0,
+    "effects_json": "{}",
+    "sort_order": 30,
+    "enabled": 1
+   }
+  ],
+  "doc_templates": [
+   {
+    "id": 1,
+    "type_id": 2,
+    "name": "Договір (PDF)",
+    "backend": "pdfmake",
+    "body_json": "{\"pageSize\": \"A4\", \"pageMargins\": [40, 40, 40, 40], \"content\": [{\"text\": \"ДОГОВІР № {{header.number}}\", \"fontSize\": 18, \"bold\": true, \"margin\": [0, 0, 0, 8]}, {\"text\": \"Предмет: {{header.subject}}\", \"margin\": [0, 0, 0, 2]}, {\"text\": \"Контрагент: {{header.counterparty}}\", \"margin\": [0, 0, 0, 2]}, {\"columns\": [{\"text\": \"Дата підписання: {{header.sign_date}}\"}, {\"text\": \"Сума: {{header.amount}}\"}], \"margin\": [0, 0, 0, 12]}, {\"text\": \"Статус: {{header.status}}\", \"color\": \"#666\"}, {\"text\": \"Сформовано: {{meta.now}}\", \"fontSize\": 8, \"color\": \"#999\", \"margin\": [0, 20, 0, 0]}]}",
+    "bindings_json": "{}",
+    "options_json": "{}",
+    "enabled": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "perm_presets": [
+   {
+    "id": 2,
+    "built_in": 0,
+    "name": "Юрист (підписання)",
+    "perms_json": "[\"entity:contracts:read\", \"entity:contracts:create\", \"entity:contracts:edit\", \"entity:counterparties:read\", \"workflow:contracts:Підписати\"]"
+   }
+  ],
+  "app_settings": [
+   {
+    "key": "app_title",
+    "value": "Договори"
+   },
+   {
+    "key": "home_title",
+    "value": "Договори та узгодження"
+   },
+   {
+    "key": "home_text",
+    "value": "Договори з нумерацією, етапами узгодження (workflow) і правами на підписання. Право «workflow:contracts:Підписати» — лише у пресета «Юрист»."
+   },
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   },
+   {
+    "key": "home_metrics_json",
+    "value": "[{\"type\": \"metric\", \"title\": \"Підписано, сума\", \"type_id\": 2, \"field\": \"amount\", \"fn\": \"sum\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Підписано\"}], \"icon\": \"bi-pen\", \"color\": \"#198754\", \"prefix\": \"₴\", \"width\": 4, \"id\": \"hm1\"}, {\"type\": \"metric\", \"title\": \"На узгодженні\", \"type_id\": 2, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"На узгодженні\"}], \"icon\": \"bi-hourglass-split\", \"color\": \"#f59e0b\", \"width\": 4, \"id\": \"hm2\"}]"
+   }
+  ],
+  "schema_records": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "type_id": 2,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 3,
+    "type_id": 2,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schema_values": [
+   {
+    "id": 1,
+    "record_id": 1,
+    "field_id": 1,
+    "value_text": "ТОВ «Бета»",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 2,
+    "record_id": 1,
+    "field_id": 2,
+    "value_text": "87654321",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 3,
+    "record_id": 1,
+    "field_id": 3,
+    "value_text": "beta@example.ua",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 4,
+    "record_id": 1,
+    "field_id": 4,
+    "value_text": "+380442223344",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 5,
+    "record_id": 2,
+    "field_id": 10,
+    "value_text": "Постачання обладнання",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 6,
+    "record_id": 2,
+    "field_id": 11,
+    "value_text": "CT-2026-001",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 7,
+    "record_id": 2,
+    "field_id": 12,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 1
+   },
+   {
+    "id": 8,
+    "record_id": 2,
+    "field_id": 13,
+    "value_text": "2026-04-10",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 9,
+    "record_id": 2,
+    "field_id": 14,
+    "value_text": null,
+    "value_num": 250000,
+    "value_ref": null
+   },
+   {
+    "id": 10,
+    "record_id": 2,
+    "field_id": 15,
+    "value_text": "Підписано",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 11,
+    "record_id": 3,
+    "field_id": 10,
+    "value_text": "Договір оренди приміщення",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 12,
+    "record_id": 3,
+    "field_id": 11,
+    "value_text": "CT-2026-002",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 13,
+    "record_id": 3,
+    "field_id": 12,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 1
+   },
+   {
+    "id": 14,
+    "record_id": 3,
+    "field_id": 14,
+    "value_text": null,
+    "value_num": 12000,
+    "value_ref": null
+   },
+   {
+    "id": 15,
+    "record_id": 3,
+    "field_id": 15,
+    "value_text": "На узгодженні",
+    "value_num": null,
+    "value_ref": null
+   }
+  ]
+ }
+}

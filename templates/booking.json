@@ -1,0 +1,667 @@
+{
+ "kind": "template",
+ "version": 1,
+ "created_at": "2026-06-07T12:00:00Z",
+ "tables": {
+  "schema_types": [
+   {
+    "id": 1,
+    "name": "services",
+    "title": "Послуги",
+    "description": "Перелік послуг",
+    "icon": "bi-scissors",
+    "color": "#0ea5e9",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "name": "staff",
+    "title": "Майстри",
+    "description": "Виконавці",
+    "icon": "bi-person-badge",
+    "color": "#10b981",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 3,
+    "name": "bookings",
+    "title": "Записи",
+    "description": "Записи клієнтів на послуги",
+    "icon": "bi-calendar-check",
+    "color": "#f59e0b",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "{\"dateField\": \"start_at\", \"mode\": \"fields\", \"titleField\": \"title\", \"subtitleField\": \"service\", \"colorField\": \"status\"}",
+    "kanban_tpl_json": "{\"statusField\": \"status\", \"fields\": [\"title\", \"service\", \"start_at\"]}",
+    "nav_hidden": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schema_fields": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "name": "name",
+    "title": "Назва",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 2,
+    "type_id": 1,
+    "name": "duration",
+    "title": "Тривалість, хв",
+    "field_type": "number",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 3,
+    "type_id": 1,
+    "name": "price",
+    "title": "Ціна",
+    "field_type": "currency",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 10,
+    "type_id": 2,
+    "name": "name",
+    "title": "Ім'я",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 11,
+    "type_id": 2,
+    "name": "specialty",
+    "title": "Спеціалізація",
+    "field_type": "text",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 12,
+    "type_id": 2,
+    "name": "phone",
+    "title": "Телефон",
+    "field_type": "phone",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 20,
+    "type_id": 3,
+    "name": "title",
+    "title": "Клієнт",
+    "field_type": "text",
+    "sort_order": 10,
+    "required": 1,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 21,
+    "type_id": 3,
+    "name": "service",
+    "title": "Послуга",
+    "field_type": "lookup",
+    "sort_order": 20,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": "schema",
+    "lookup_coll": "1",
+    "lookup_display": "name",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 22,
+    "type_id": 3,
+    "name": "staff",
+    "title": "Майстер",
+    "field_type": "lookup",
+    "sort_order": 30,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": "schema",
+    "lookup_coll": "2",
+    "lookup_display": "name",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 23,
+    "type_id": 3,
+    "name": "start_at",
+    "title": "Час",
+    "field_type": "date",
+    "sort_order": 40,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 24,
+    "type_id": 3,
+    "name": "status",
+    "title": "Статус",
+    "field_type": "select",
+    "sort_order": 50,
+    "required": 0,
+    "options_json": "[{\"value\": \"Заплановано\", \"color\": \"#0d6efd\"}, {\"value\": \"Підтверджено\", \"color\": \"#0ea5e9\"}, {\"value\": \"Виконано\", \"color\": \"#198754\"}, {\"value\": \"Скасовано\", \"color\": \"#dc3545\"}]",
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 25,
+    "type_id": 3,
+    "name": "client_phone",
+    "title": "Телефон клієнта",
+    "field_type": "phone",
+    "sort_order": 60,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   },
+   {
+    "id": 26,
+    "type_id": 3,
+    "name": "notes",
+    "title": "Примітки",
+    "field_type": "rich_text",
+    "sort_order": 70,
+    "required": 0,
+    "options_json": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": "title",
+    "lookup_value": "id",
+    "formula": null,
+    "width": null,
+    "hidden": 0,
+    "format_json": null,
+    "validation_json": null
+   }
+  ],
+  "schema_relations": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "child_type_id": 3,
+    "fk_field": "service",
+    "title": "Записи",
+    "icon": "bi-calendar-check",
+    "sort_order": 10,
+    "visible_fields_json": "[\"title\", \"start_at\", \"status\"]",
+    "on_delete": "restrict"
+   },
+   {
+    "id": 2,
+    "type_id": 2,
+    "child_type_id": 3,
+    "fk_field": "staff",
+    "title": "Записи",
+    "icon": "bi-calendar-check",
+    "sort_order": 10,
+    "visible_fields_json": "[\"title\", \"start_at\", \"status\"]",
+    "on_delete": "restrict"
+   }
+  ],
+  "schema_views": [
+   {
+    "id": 1,
+    "type_id": 3,
+    "name": "📅 Календар",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "visible_fields": "[]",
+    "view_mode": "calendar",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "type_id": 3,
+    "name": "📊 Канбан",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "visible_fields": "[]",
+    "view_mode": "kanban",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schedules": [
+   {
+    "id": 1,
+    "name": "Нагадування про записи (9:00)",
+    "enabled": 1,
+    "when_kind": "cron",
+    "cron_expr": "0 9 * * *",
+    "run_at": "",
+    "action_kind": "notify",
+    "script_id": 0,
+    "channel": "telegram",
+    "target": "",
+    "subject": "",
+    "body": "Сьогоднішні записи — не забудьте підтвердити.",
+    "parse_mode": "HTML",
+    "last_run": "",
+    "last_status": "",
+    "last_error": "",
+    "done": 0,
+    "created_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "app_settings": [
+   {
+    "key": "app_title",
+    "value": "Бронювання"
+   },
+   {
+    "key": "home_title",
+    "value": "Бронювання та записи"
+   },
+   {
+    "key": "home_text",
+    "value": "Послуги, майстри й записи клієнтів. Календарний і канбан-перегляд, щоденне нагадування."
+   },
+   {
+    "key": "home_show_tiles",
+    "value": "1"
+   },
+   {
+    "key": "home_metrics_json",
+    "value": "[{\"type\": \"metric\", \"title\": \"Записів усього\", \"type_id\": 3, \"field\": \"\", \"fn\": \"count\", \"icon\": \"bi-calendar-check\", \"color\": \"#f59e0b\", \"width\": 4, \"id\": \"hm1\"}, {\"type\": \"metric\", \"title\": \"Підтверджених\", \"type_id\": 3, \"field\": \"\", \"fn\": \"count\", \"filters\": [{\"field\": \"status\", \"op\": \"eq\", \"value\": \"Підтверджено\"}], \"icon\": \"bi-check2-circle\", \"color\": \"#0ea5e9\", \"width\": 4, \"id\": \"hm2\"}]"
+   }
+  ],
+  "schema_records": [
+   {
+    "id": 1,
+    "type_id": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 2,
+    "type_id": 1,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 3,
+    "type_id": 2,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 4,
+    "type_id": 2,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 5,
+    "type_id": 3,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 6,
+    "type_id": 3,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   },
+   {
+    "id": 7,
+    "type_id": 3,
+    "created_at": "2026-06-07T12:00:00Z",
+    "updated_at": "2026-06-07T12:00:00Z"
+   }
+  ],
+  "schema_values": [
+   {
+    "id": 1,
+    "record_id": 1,
+    "field_id": 1,
+    "value_text": "Стрижка",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 2,
+    "record_id": 1,
+    "field_id": 2,
+    "value_text": null,
+    "value_num": 60,
+    "value_ref": null
+   },
+   {
+    "id": 3,
+    "record_id": 1,
+    "field_id": 3,
+    "value_text": null,
+    "value_num": 300,
+    "value_ref": null
+   },
+   {
+    "id": 4,
+    "record_id": 2,
+    "field_id": 1,
+    "value_text": "Манікюр",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 5,
+    "record_id": 2,
+    "field_id": 2,
+    "value_text": null,
+    "value_num": 90,
+    "value_ref": null
+   },
+   {
+    "id": 6,
+    "record_id": 2,
+    "field_id": 3,
+    "value_text": null,
+    "value_num": 450,
+    "value_ref": null
+   },
+   {
+    "id": 7,
+    "record_id": 3,
+    "field_id": 10,
+    "value_text": "Олена",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 8,
+    "record_id": 3,
+    "field_id": 11,
+    "value_text": "Перукар",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 9,
+    "record_id": 3,
+    "field_id": 12,
+    "value_text": "+380501234501",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 10,
+    "record_id": 4,
+    "field_id": 10,
+    "value_text": "Ірина",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 11,
+    "record_id": 4,
+    "field_id": 11,
+    "value_text": "Майстер манікюру",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 12,
+    "record_id": 4,
+    "field_id": 12,
+    "value_text": "+380501234502",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 13,
+    "record_id": 5,
+    "field_id": 20,
+    "value_text": "Петро К.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 14,
+    "record_id": 5,
+    "field_id": 21,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 1
+   },
+   {
+    "id": 15,
+    "record_id": 5,
+    "field_id": 22,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 3
+   },
+   {
+    "id": 16,
+    "record_id": 5,
+    "field_id": 23,
+    "value_text": "2026-06-10",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 17,
+    "record_id": 5,
+    "field_id": 24,
+    "value_text": "Підтверджено",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 18,
+    "record_id": 5,
+    "field_id": 25,
+    "value_text": "+380671112233",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 19,
+    "record_id": 6,
+    "field_id": 20,
+    "value_text": "Марія Л.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 20,
+    "record_id": 6,
+    "field_id": 21,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 2
+   },
+   {
+    "id": 21,
+    "record_id": 6,
+    "field_id": 22,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 4
+   },
+   {
+    "id": 22,
+    "record_id": 6,
+    "field_id": 23,
+    "value_text": "2026-06-11",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 23,
+    "record_id": 6,
+    "field_id": 24,
+    "value_text": "Заплановано",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 24,
+    "record_id": 7,
+    "field_id": 20,
+    "value_text": "Іван С.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 25,
+    "record_id": 7,
+    "field_id": 21,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 1
+   },
+   {
+    "id": 26,
+    "record_id": 7,
+    "field_id": 22,
+    "value_text": null,
+    "value_num": null,
+    "value_ref": 3
+   },
+   {
+    "id": 27,
+    "record_id": 7,
+    "field_id": 23,
+    "value_text": "2026-06-09",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 28,
+    "record_id": 7,
+    "field_id": 24,
+    "value_text": "Виконано",
+    "value_num": null,
+    "value_ref": null
+   }
+  ]
+ }
+}
