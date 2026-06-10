@@ -108,6 +108,18 @@
       "category": "Сервіс",
       "accent": "#f59e0b",
       "highlights": ["Календар", "Kanban", "Нагадування"]
+    },
+    {
+      "id": "site",
+      "title": "Публічний сайт (демо)",
+      "description": "Статті та статичні сторінки з навігацією: готова вітрина для APP_PROFILE=site (SSR, /page/{slug}, sitemap, SEO).",
+      "icon": "bi-globe",
+      "version": 1,
+      "file": "templates/site.json",
+      "hasSampleData": true,
+      "category": "Сайт",
+      "accent": "#0ea5e9",
+      "highlights": ["Навігація", "Статичні сторінки", "SSR + SEO", "Тестові дані"]
     }
   ]
 }
