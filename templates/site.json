@@ -31,6 +31,62 @@
     "calendar_tpl_json": "",
     "kanban_tpl_json": "",
     "created_at": "2026-06-10 12:00:00"
+   },
+   {
+    "id": 3,
+    "name": "services",
+    "title": "Послуги",
+    "description": "",
+    "icon": "bi-grid",
+    "color": "#0ea5e9",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "created_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 4,
+    "name": "projects",
+    "title": "Проєкти",
+    "description": "",
+    "icon": "bi-kanban",
+    "color": "#6366f1",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "created_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 5,
+    "name": "team",
+    "title": "Команда",
+    "description": "",
+    "icon": "bi-people",
+    "color": "#10b981",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "created_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 6,
+    "name": "faq",
+    "title": "Часті питання",
+    "description": "",
+    "icon": "bi-question-circle",
+    "color": "#f59e0b",
+    "kind": "entity",
+    "row_tpl_json": "",
+    "gallery_tpl_json": "",
+    "calendar_tpl_json": "",
+    "kanban_tpl_json": "",
+    "created_at": "2026-06-12 12:00:00"
    }
   ],
   "schema_fields": [
@@ -231,6 +287,420 @@
     "lookup_coll": null,
     "lookup_display": null,
     "lookup_value": null
+   },
+   {
+    "id": 12,
+    "type_id": 3,
+    "name": "title",
+    "title": "Заголовок",
+    "field_type": "text",
+    "sort_order": 0,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 13,
+    "type_id": 3,
+    "name": "slug",
+    "title": "Слаг (URL)",
+    "field_type": "text",
+    "sort_order": 1,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 14,
+    "type_id": 3,
+    "name": "excerpt",
+    "title": "Анонс",
+    "field_type": "text",
+    "sort_order": 2,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 15,
+    "type_id": 3,
+    "name": "body",
+    "title": "Текст",
+    "field_type": "rich_text",
+    "sort_order": 3,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 16,
+    "type_id": 3,
+    "name": "cover",
+    "title": "Обкладинка",
+    "field_type": "image",
+    "sort_order": 4,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 17,
+    "type_id": 3,
+    "name": "published",
+    "title": "Опубліковано",
+    "field_type": "boolean",
+    "sort_order": 5,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 18,
+    "type_id": 4,
+    "name": "title",
+    "title": "Заголовок",
+    "field_type": "text",
+    "sort_order": 0,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 19,
+    "type_id": 4,
+    "name": "slug",
+    "title": "Слаг (URL)",
+    "field_type": "text",
+    "sort_order": 1,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 20,
+    "type_id": 4,
+    "name": "excerpt",
+    "title": "Анонс",
+    "field_type": "text",
+    "sort_order": 2,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 21,
+    "type_id": 4,
+    "name": "body",
+    "title": "Текст",
+    "field_type": "rich_text",
+    "sort_order": 3,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 22,
+    "type_id": 4,
+    "name": "cover",
+    "title": "Обкладинка",
+    "field_type": "image",
+    "sort_order": 4,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 23,
+    "type_id": 4,
+    "name": "published_at",
+    "title": "Дата",
+    "field_type": "date",
+    "sort_order": 5,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 24,
+    "type_id": 4,
+    "name": "published",
+    "title": "Опубліковано",
+    "field_type": "boolean",
+    "sort_order": 6,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 25,
+    "type_id": 5,
+    "name": "name",
+    "title": "Імʼя",
+    "field_type": "text",
+    "sort_order": 0,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 26,
+    "type_id": 5,
+    "name": "slug",
+    "title": "Слаг (URL)",
+    "field_type": "text",
+    "sort_order": 1,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 27,
+    "type_id": 5,
+    "name": "role",
+    "title": "Роль",
+    "field_type": "text",
+    "sort_order": 2,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 28,
+    "type_id": 5,
+    "name": "bio",
+    "title": "Біо",
+    "field_type": "rich_text",
+    "sort_order": 3,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 29,
+    "type_id": 5,
+    "name": "photo",
+    "title": "Фото",
+    "field_type": "image",
+    "sort_order": 4,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 30,
+    "type_id": 5,
+    "name": "published",
+    "title": "Опубліковано",
+    "field_type": "boolean",
+    "sort_order": 5,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 31,
+    "type_id": 6,
+    "name": "question",
+    "title": "Питання",
+    "field_type": "text",
+    "sort_order": 0,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 32,
+    "type_id": 6,
+    "name": "slug",
+    "title": "Слаг (URL)",
+    "field_type": "text",
+    "sort_order": 1,
+    "required": 1,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 33,
+    "type_id": 6,
+    "name": "answer",
+    "title": "Відповідь",
+    "field_type": "rich_text",
+    "sort_order": 2,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
+   },
+   {
+    "id": 34,
+    "type_id": 6,
+    "name": "published",
+    "title": "Опубліковано",
+    "field_type": "boolean",
+    "sort_order": 3,
+    "required": 0,
+    "hidden": 0,
+    "width": null,
+    "options_json": null,
+    "format_json": null,
+    "formula": null,
+    "lookup_type": null,
+    "lookup_coll": null,
+    "lookup_display": null,
+    "lookup_value": null
    }
   ],
   "schema_views": [
@@ -257,6 +727,54 @@
     "extras_json": "{}",
     "user_id": null,
     "created_at": "2026-06-10 12:00:00"
+   },
+   {
+    "id": 3,
+    "type_id": 3,
+    "name": "Послуги",
+    "view_mode": "table",
+    "visible_fields": "[]",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 4,
+    "type_id": 4,
+    "name": "Проєкти",
+    "view_mode": "table",
+    "visible_fields": "[]",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 5,
+    "type_id": 5,
+    "name": "Команда",
+    "view_mode": "table",
+    "visible_fields": "[]",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 6,
+    "type_id": 6,
+    "name": "Часті питання",
+    "view_mode": "table",
+    "visible_fields": "[]",
+    "filters_json": "[]",
+    "sort_json": "[]",
+    "extras_json": "{}",
+    "user_id": null,
+    "created_at": "2026-06-12 12:00:00"
    }
   ],
   "schema_records": [
@@ -301,6 +819,84 @@
     "type_id": 2,
     "created_at": "2026-06-10 12:00:00",
     "updated_at": "2026-06-10 12:00:00"
+   },
+   {
+    "id": 8,
+    "type_id": 3,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 9,
+    "type_id": 3,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 10,
+    "type_id": 3,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 11,
+    "type_id": 4,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 12,
+    "type_id": 4,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 13,
+    "type_id": 4,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 14,
+    "type_id": 5,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 15,
+    "type_id": 5,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 16,
+    "type_id": 5,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 17,
+    "type_id": 6,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 18,
+    "type_id": 6,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 19,
+    "type_id": 6,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
+   },
+   {
+    "id": 20,
+    "type_id": 6,
+    "created_at": "2026-06-12 12:00:00",
+    "updated_at": "2026-06-12 12:00:00"
    }
   ],
   "schema_values": [
@@ -591,6 +1187,518 @@
     "value_text": null,
     "value_num": 0,
     "value_ref": null
+   },
+   {
+    "id": 37,
+    "record_id": 8,
+    "field_id": 12,
+    "value_text": "Веброзробка",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 38,
+    "record_id": 8,
+    "field_id": 13,
+    "value_text": "web",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 39,
+    "record_id": 8,
+    "field_id": 14,
+    "value_text": "Сайти та вебзастосунки під ключ.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 40,
+    "record_id": 8,
+    "field_id": 15,
+    "value_text": "<p>Проєктуємо, розробляємо й супроводжуємо сучасні сайти та вебзастосунки.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 41,
+    "record_id": 8,
+    "field_id": 17,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 42,
+    "record_id": 9,
+    "field_id": 12,
+    "value_text": "Дизайн",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 43,
+    "record_id": 9,
+    "field_id": 13,
+    "value_text": "design",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 44,
+    "record_id": 9,
+    "field_id": 14,
+    "value_text": "UI/UX, брендинг, айдентика.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 45,
+    "record_id": 9,
+    "field_id": 15,
+    "value_text": "<p>Створюємо зрозумілі інтерфейси та цілісну візуальну айдентику.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 46,
+    "record_id": 9,
+    "field_id": 17,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 47,
+    "record_id": 10,
+    "field_id": 12,
+    "value_text": "Підтримка",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 48,
+    "record_id": 10,
+    "field_id": 13,
+    "value_text": "support",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 49,
+    "record_id": 10,
+    "field_id": 14,
+    "value_text": "Технічний супровід і розвиток.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 50,
+    "record_id": 10,
+    "field_id": 15,
+    "value_text": "<p>Беремо на себе хостинг, моніторинг, оновлення та розвиток вашого продукту.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 51,
+    "record_id": 10,
+    "field_id": 17,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 52,
+    "record_id": 11,
+    "field_id": 18,
+    "value_text": "Інтернет-магазин «Кошик»",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 53,
+    "record_id": 11,
+    "field_id": 19,
+    "value_text": "koshyk",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 54,
+    "record_id": 11,
+    "field_id": 20,
+    "value_text": "Електронна комерція з нуля.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 55,
+    "record_id": 11,
+    "field_id": 21,
+    "value_text": "<p>Повноцінний магазин: каталог, кошик, оплата, кабінет користувача.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 56,
+    "record_id": 11,
+    "field_id": 23,
+    "value_text": "2026-04-12",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 57,
+    "record_id": 11,
+    "field_id": 24,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 58,
+    "record_id": 12,
+    "field_id": 18,
+    "value_text": "Портал бронювання",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 59,
+    "record_id": 12,
+    "field_id": 19,
+    "value_text": "booking-portal",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 60,
+    "record_id": 12,
+    "field_id": 20,
+    "value_text": "Запис на послуги онлайн.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 61,
+    "record_id": 12,
+    "field_id": 21,
+    "value_text": "<p>Система бронювання з календарем майстрів і нагадуваннями.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 62,
+    "record_id": 12,
+    "field_id": 23,
+    "value_text": "2026-03-02",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 63,
+    "record_id": 12,
+    "field_id": 24,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 64,
+    "record_id": 13,
+    "field_id": 18,
+    "value_text": "Корпоративний сайт",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 65,
+    "record_id": 13,
+    "field_id": 19,
+    "value_text": "corp",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 66,
+    "record_id": 13,
+    "field_id": 20,
+    "value_text": "Імідж-сайт для компанії.",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 67,
+    "record_id": 13,
+    "field_id": 21,
+    "value_text": "<p>Багатомовний сайт із новинами, командою та формами звʼязку.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 68,
+    "record_id": 13,
+    "field_id": 23,
+    "value_text": "2026-02-18",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 69,
+    "record_id": 13,
+    "field_id": 24,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 70,
+    "record_id": 14,
+    "field_id": 25,
+    "value_text": "Олена Коваль",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 71,
+    "record_id": 14,
+    "field_id": 26,
+    "value_text": "olena",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 72,
+    "record_id": 14,
+    "field_id": 27,
+    "value_text": "Засновниця",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 73,
+    "record_id": 14,
+    "field_id": 28,
+    "value_text": "<p>Веде стратегію продукту й роботу з клієнтами.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 74,
+    "record_id": 14,
+    "field_id": 30,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 75,
+    "record_id": 15,
+    "field_id": 25,
+    "value_text": "Андрій Шевченко",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 76,
+    "record_id": 15,
+    "field_id": 26,
+    "value_text": "andrii",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 77,
+    "record_id": 15,
+    "field_id": 27,
+    "value_text": "Технічний директор",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 78,
+    "record_id": 15,
+    "field_id": 28,
+    "value_text": "<p>Відповідає за архітектуру й розробку.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 79,
+    "record_id": 15,
+    "field_id": 30,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 80,
+    "record_id": 16,
+    "field_id": 25,
+    "value_text": "Марія Бондар",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 81,
+    "record_id": 16,
+    "field_id": 26,
+    "value_text": "maria",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 82,
+    "record_id": 16,
+    "field_id": 27,
+    "value_text": "Дизайнерка",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 83,
+    "record_id": 16,
+    "field_id": 28,
+    "value_text": "<p>Створює інтерфейси та візуальну айдентику.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 84,
+    "record_id": 16,
+    "field_id": 30,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 85,
+    "record_id": 17,
+    "field_id": 31,
+    "value_text": "Скільки коштує сайт?",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 86,
+    "record_id": 17,
+    "field_id": 32,
+    "value_text": "price",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 87,
+    "record_id": 17,
+    "field_id": 33,
+    "value_text": "<p>Вартість залежить від обсягу. Точну оцінку даємо після короткого брифу.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 88,
+    "record_id": 17,
+    "field_id": 34,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 89,
+    "record_id": 18,
+    "field_id": 31,
+    "value_text": "Які терміни розробки?",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 90,
+    "record_id": 18,
+    "field_id": 32,
+    "value_text": "terms",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 91,
+    "record_id": 18,
+    "field_id": 33,
+    "value_text": "<p>Типовий проєкт — 3–6 тижнів залежно від складності.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 92,
+    "record_id": 18,
+    "field_id": 34,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 93,
+    "record_id": 19,
+    "field_id": 31,
+    "value_text": "Чи робите підтримку?",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 94,
+    "record_id": 19,
+    "field_id": 32,
+    "value_text": "support-faq",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 95,
+    "record_id": 19,
+    "field_id": 33,
+    "value_text": "<p>Так, пропонуємо щомісячний супровід і розвиток.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 96,
+    "record_id": 19,
+    "field_id": 34,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
+   },
+   {
+    "id": 97,
+    "record_id": 20,
+    "field_id": 31,
+    "value_text": "Чи можна редагувати самому?",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 98,
+    "record_id": 20,
+    "field_id": 32,
+    "value_text": "self-edit",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 99,
+    "record_id": 20,
+    "field_id": 33,
+    "value_text": "<p>Так — контент редагується в адмінці Gloud без програміста.</p>",
+    "value_num": null,
+    "value_ref": null
+   },
+   {
+    "id": 100,
+    "record_id": 20,
+    "field_id": 34,
+    "value_text": null,
+    "value_num": 1,
+    "value_ref": null
    }
   ],
   "app_settings": [
@@ -673,6 +1781,14 @@
    {
     "key": "site_nav",
     "value": "[{\"label\": \"Головна\", \"url\": \"/\"}, {\"label\": \"Про нас\", \"url\": \"/page/about\"}, {\"label\": \"Контакти\", \"url\": \"/page/contact\"}]"
+   },
+   {
+    "key": "site_sections",
+    "value": "[{\"section\": \"services\", \"title\": \"Послуги\", \"intro\": \"<p>Що ми пропонуємо — від ідеї до запуску та супроводу.</p>\", \"type\": \"services\", \"title_field\": \"title\", \"slug_field\": \"slug\", \"body_field\": \"body\", \"excerpt_field\": \"excerpt\", \"cover_field\": \"cover\", \"date_field\": \"\", \"published_field\": \"published\", \"page_size\": 10}, {\"section\": \"projects\", \"title\": \"Проєкти\", \"intro\": \"<p>Декілька наших робіт і кейсів.</p>\", \"type\": \"projects\", \"title_field\": \"title\", \"slug_field\": \"slug\", \"body_field\": \"body\", \"excerpt_field\": \"excerpt\", \"cover_field\": \"cover\", \"date_field\": \"published_at\", \"published_field\": \"published\", \"page_size\": 10}, {\"section\": \"team\", \"title\": \"Команда\", \"intro\": \"<p>Люди, які роблять ваші проєкти.</p>\", \"type\": \"team\", \"title_field\": \"name\", \"slug_field\": \"slug\", \"body_field\": \"bio\", \"excerpt_field\": \"role\", \"cover_field\": \"photo\", \"date_field\": \"\", \"published_field\": \"published\", \"page_size\": 12}, {\"section\": \"faq\", \"title\": \"Часті питання\", \"intro\": \"<p>Відповіді на найпоширеніші запитання.</p>\", \"type\": \"faq\", \"title_field\": \"question\", \"slug_field\": \"slug\", \"body_field\": \"answer\", \"excerpt_field\": \"\", \"cover_field\": \"\", \"date_field\": \"\", \"published_field\": \"published\", \"page_size\": 20}]"
+   },
+   {
+    "key": "site_sections_nav",
+    "value": "[{\"label\": \"Послуги\", \"url\": \"/s/services\"}, {\"label\": \"Проєкти\", \"url\": \"/s/projects\"}, {\"label\": \"Команда\", \"url\": \"/s/team\"}, {\"label\": \"FAQ\", \"url\": \"/s/faq\"}]"
    }
   ]
  }
